@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMzMTVlZmIiLz48ZyBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMy41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0xNCAyMmgzNk0zMiAxM3YzN00yMiA1MWgyME0xNCAyMmwtOCAxNk0xNCAyMmw4IDE2TTUwIDIybC04IDE2TTUwIDIybDggMTYiLz48L2c+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTYgMzhoMTZhOCA4IDAgMCAxLTE2IDB6TTQyIDM4aDE2YTggOCAwIDAgMS0xNiAweiIvPjwvc3ZnPg=="/>
+<link rel="icon" type="image/png" sizes="180x180" href="data:image/png;base64,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"/>
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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"/>
+<meta name="theme-color" content="#315efb"/>
+<meta name="apple-mobile-web-app-title" content="ConectBem"/>
+
+<title>ConectBem | Tecnologia no Cotidiano</title>
+
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#667085;--primary:#315efb;--primary2:#6c63ff;--line:#e5e9f2;--dark:#101828;--shadow:0 15px 45px #17203312}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:.25s}a{text-decoration:none;color:inherit}.header{height:76px;padding:0 6%;background:linear-gradient(135deg,#111d42,#315efb 65%,#6c63ff);color:#fff;display:flex;align-items:center;gap:25px;position:sticky;top:0;z-index:20;box-shadow:0 5px 25px #10182825}.logo{font-size:1.15rem;font-weight:900;white-space:nowrap}.logo span{opacity:.7}.header nav{display:flex;align-items:center;justify-content:flex-end;gap:3px;flex:1}.header nav a{padding:9px 10px;font-size:.85rem;font-weight:700;border-radius:9px}.header nav a:hover,.header nav a.active{background:#ffffff20}.theme,.menu{border:0;background:#ffffff18;color:#fff;border-radius:10px;padding:9px 11px;cursor:pointer;font-size:1rem}.menu{display:none}.hero{padding:90px 7%;min-height:610px;display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;background:linear-gradient(135deg,#edf3ff,#fff)}.badge{display:inline-block;background:#e1e8ff;color:#3150c9;padding:7px 13px;border-radius:99px;font-weight:800;font-size:.78rem;margin-bottom:18px}.hero h1,.page-head h1{font-size:clamp(2.5rem,5vw,4.8rem);line-height:1.02;margin-bottom:22px}.hero h1 span,.page-head h1 span{color:var(--primary)}.hero p,.page-head p{font-size:1.1rem;color:#526078;max-width:700px}.actions{display:flex;gap:12px;flex-wrap:wrap}.btn{display:inline-block;border:0;border-radius:12px;padding:13px 19px;background:var(--primary);color:#fff;font-weight:800;cursor:pointer;margin-top:24px;box-shadow:0 8px 20px #315efb25}.btn.outline{background:transparent;color:var(--primary);border:1px solid #315efb50}.btn.light{background:#fff;color:#315efb}.hero-card{background:#fff;border:1px solid var(--line);border-radius:30px;padding:45px;text-align:center;box-shadow:var(--shadow)}.balance{width:260px;height:260px;margin:auto;border-radius:50%;background:conic-gradient(var(--primary) 0 33%,#15a56a 33% 66%,#f3a51b 66%);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:2px;font-size:2rem;position:relative}.balance:after{content:"";position:absolute;width:185px;height:185px;background:#fff;border-radius:50%;z-index:0}.balance div{z-index:1}.hero-card h3{margin-top:20px;font-size:1.35rem}.hero-card p{color:var(--muted)}.section{padding:80px 7%;max-width:1300px;margin:auto}.title{margin-bottom:35px}.title span,.page-head>span{font-weight:800;color:var(--primary);text-transform:uppercase;font-size:.8rem}.title h2{font-size:2.2rem;max-width:800px}.feature-grid,.pillar-grid,.tips-grid,.exercise-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.feature,.pillar,.tip-card,.exercise,.chart-card,.routine-panel{background:var(--card);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}.feature{padding:28px;transition:.2s}.feature:hover{transform:translateY(-5px)}.feature i{font-style:normal;font-size:2.3rem}.feature h3{margin:15px 0 7px}.feature p,.tip-card p,.exercise p,.pillar p{color:var(--muted)}.cta{margin:20px 7% 80px;padding:45px;border-radius:25px;background:linear-gradient(135deg,#172554,#315efb);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px}.cta span{opacity:.75;font-weight:700}.page-head{padding:85px 7% 65px;background:linear-gradient(135deg,#edf3ff,#fff)}.page-head p{margin-top:10px}.pillar-grid{grid-template-columns:repeat(3,1fr)}.pillar{padding:30px;border-top:5px solid var(--primary)}.pillar.body{border-color:#15a56a}.pillar.social{border-color:#f3a51b}.big-icon{font-size:3rem}.pillar h2{margin:10px 0}.pillar h4{margin:22px 0 8px}.pillar ul{padding-left:20px;color:var(--muted)}.tips-grid{grid-template-columns:repeat(3,1fr)}.tip-card{padding:25px}.tip-card>b{font-size:2.1rem}.tip-card h3{margin:8px 0}.tip-card button,.exercise-body button{margin-top:18px;border:0;border-radius:10px;padding:10px 13px;background:#edf2ff;color:#315efb;font-weight:800;cursor:pointer}.tip-card button.done{background:#d9f8e8;color:#087443}.week{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;margin-bottom:20px}.day{padding:18px 8px;background:#fff;border:1px solid var(--line);border-radius:15px;text-align:center;cursor:pointer;font-weight:800}.day.active{background:var(--primary);color:#fff}.routine-panel{padding:30px;max-width:800px}.routine-panel label{display:block;padding:14px;border-bottom:1px solid var(--line);cursor:pointer}.routine-panel input{margin-right:10px;transform:scale(1.2)}.saved{color:#14804a;margin-top:15px;font-weight:700}.exercise-grid{grid-template-columns:repeat(2,1fr)}.exercise{overflow:hidden}.exercise-img{height:190px;display:grid;place-items:center;font-size:6rem;background:linear-gradient(135deg,#eaf0ff,#f9fbff)}.exercise-body{padding:24px}.exercise-body>span{font-size:.75rem;color:var(--primary);font-weight:900}.exercise-body h2{margin:5px 0}.exercise-body button+button{margin-left:6px;background:#e7f8ef;color:#087443}.notice{margin-top:25px;padding:18px;background:#fff8df;border:1px solid #f0dc91;border-radius:15px}.modal{display:none;position:fixed;inset:0;background:#000b;z-index:50;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modal-box{width:min(900px,100%);background:#000;border-radius:18px;padding:8px;position:relative}.modal-box iframe{width:100%;height:500px;border:0;border-radius:12px}.close{position:absolute;right:-10px;top:-15px;border:0;background:#fff;border-radius:50%;width:35px;height:35px;font-size:1.5rem;cursor:pointer;z-index:2}.quiz-page{min-height:calc(100vh - 76px);padding:70px 7%;display:grid;place-items:center;background:linear-gradient(135deg,#edf3ff,#fff)}.quiz-box{width:min(760px,100%);background:var(--dark);color:#fff;padding:40px;border-radius:25px;box-shadow:var(--shadow)}.quiz-box h1{font-size:2rem;margin:18px 0 25px}.quiz-box #quizNumber{color:#aeb8ca}.progress{height:7px;background:#ffffff20;border-radius:99px;overflow:hidden;margin:20px 0}.progress div{height:100%;width:0;background:#6c8aff;transition:.3s}.answer{width:100%;display:block;text-align:left;border:1px solid #ffffff25;background:#ffffff0b;color:#fff;padding:15px;border-radius:12px;margin:10px 0;cursor:pointer;font-size:1rem}.answer:hover{background:#ffffff18}.quiz-result{padding:20px;background:#ffffff10;border-radius:15px;margin-top:20px}.restart{display:none}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:25px}.stats div{background:#fff;border:1px solid var(--line);border-radius:20px;padding:25px;text-align:center}.stats strong{display:block;font-size:2.5rem;color:var(--primary)}.stats span{color:var(--muted)}.chart-card{padding:30px}.bars{height:280px;display:flex;align-items:end;justify-content:space-around;gap:12px;padding:30px 10px 10px;border-bottom:1px solid var(--line)}.bar-group{height:100%;flex:1;display:flex;align-items:end;justify-content:center;gap:5px}.bar{width:20px;border-radius:6px 6px 0 0;min-height:3px}.bar.m{background:#315efb}.bar.b{background:#15a56a}.bar.s{background:#f3a51b}.legend{display:flex;gap:20px;justify-content:center;margin-top:18px;color:var(--muted)}.danger{margin-top:25px;border:0;background:#ffe5e5;color:#a52323;padding:12px 16px;border-radius:10px;font-weight:800;cursor:pointer}footer{background:#101828;color:#d0d5dd;text-align:center;padding:35px 7%}footer strong{color:#fff}
+body.dark{--bg:#0b1120;--card:#111a2e;--text:#f2f4f7;--muted:#a8b2c5;--line:#26334d}body.dark .hero,body.dark .page-head,body.dark .quiz-page{background:linear-gradient(135deg,#0b142b,#101a30)}body.dark .hero-card,body.dark .feature,body.dark .pillar,body.dark .tip-card,body.dark .exercise,body.dark .routine-panel,body.dark .day,body.dark .stats div,body.dark .chart-card{background:#111a2e}
+@media(max-width:950px){.header nav{display:none}.menu{display:block}.header{justify-content:space-between}.header nav.open{display:flex;position:absolute;top:76px;left:0;right:0;background:#111d42;flex-direction:column;padding:15px}.hero{grid-template-columns:1fr}.feature-grid,.pillar-grid,.tips-grid{grid-template-columns:1fr 1fr}.exercise-grid{grid-template-columns:1fr}.week{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:600px){.feature-grid,.pillar-grid,.tips-grid,.stats{grid-template-columns:1fr}.hero,.page-head,.section{padding-left:5%;padding-right:5%}.hero{padding-top:55px}.cta{margin-left:5%;margin-right:5%;flex-direction:column;align-items:flex-start}.week{grid-template-columns:repeat(2,1fr)}.modal-box iframe{height:300px}.legend{font-size:.8rem;gap:8px}.quiz-box{padding:25px}}
+
+.single-page-section{display:none}
+.single-page-section.active{display:block}
+.header nav a{cursor:pointer}
+.toast{position:fixed;right:20px;bottom:20px;background:#101828;color:#fff;padding:13px 17px;border-radius:12px;box-shadow:0 10px 30px #0003;z-index:100;display:flex;align-items:center;gap:10px;font-weight:600;max-width:min(360px,calc(100% - 40px));opacity:0;visibility:hidden;transform:translateY(18px);pointer-events:none;transition:opacity .35s ease,transform .35s ease,visibility .35s}.toast.show{opacity:1;visibility:visible;transform:none}.toast i{color:#4ade80}
+
+/* ===== Atualização visual ConectBem ===== */
+:root{
+ --bg:#f4f7fc;--card:#ffffff;--text:#17243b;--muted:#64748b;
+ --primary:#2563eb;--primary2:#7c3aed;--line:#dfe7f2;
+ --dark:#101a30;--shadow:0 18px 50px rgba(25,48,88,.09)
+}
+body{font-family:Inter,"Segoe UI",Arial,sans-serif;background:
+ radial-gradient(ellipse at 8% 0%,rgba(37,99,235,.07),transparent 34%),var(--bg)}
+.header{background:rgba(15,29,60,.94);backdrop-filter:blur(14px);height:78px}
+.logo{letter-spacing:-.4px}.logo:before{content:"";display:inline-block;width:9px;height:9px;background:#67e8f9;border-radius:50%;margin-right:9px;box-shadow:0 0 0 5px #67e8f925}
+.header nav a{transition:background .2s,transform .2s}.header nav a:hover{transform:translateY(-1px)}
+.hero{position:relative;overflow:hidden;background:linear-gradient(125deg,#eaf1ff 0%,#f8faff 52%,#f2edff 100%);min-height:640px}
+.hero:before{content:"";position:absolute;width:390px;height:390px;border:1px solid #315efb18;border-radius:50%;right:-110px;top:-145px;box-shadow:0 0 0 35px #315efb08,0 0 0 75px #315efb05}
+.hero-text,.hero-card{position:relative;z-index:1}.hero h1{letter-spacing:-2.3px}.hero h1 span,.page-head h1 span{background:linear-gradient(100deg,#2563eb,#7c3aed);-webkit-background-clip:text;background-clip:text;color:transparent}
+.badge{background:#dfe9ff;color:#244fc5;letter-spacing:.5px}
+.btn{transition:transform .2s,box-shadow .2s;background:linear-gradient(120deg,#2563eb,#5146e5);box-shadow:0 9px 22px #315efb2b}
+.btn:hover{transform:translateY(-2px);box-shadow:0 13px 28px #315efb35}
+.btn.outline{box-shadow:none}.hero-card{border-radius:32px;background:rgba(255,255,255,.88);backdrop-filter:blur(12px)}
+.balance{box-shadow:0 16px 35px #315efb15}.section{padding-top:72px;padding-bottom:72px}
+.title h2{letter-spacing:-.8px}.title span,.page-head>span{letter-spacing:1.4px}
+.feature,.pillar,.tip-card,.exercise,.chart-card,.routine-panel,.stats div{transition:transform .22s,border-color .22s,box-shadow .22s}
+.feature:hover,.tip-card:hover,.exercise:hover{transform:translateY(-4px);border-color:#b8caff;box-shadow:0 20px 45px #18356c12}
+.feature{position:relative;overflow:hidden}.feature:after{content:"";position:absolute;right:-30px;bottom:-45px;width:100px;height:100px;border-radius:50%;background:#315efb08}
+.feature-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pillar{border-top-width:4px}.pillar h2{letter-spacing:-.4px}.pillar ul li{margin:5px 0}
+.page-head{background:linear-gradient(125deg,#eaf1ff,#fff 58%,#f2edff);position:relative;overflow:hidden}
+.page-head h1{letter-spacing:-1.8px}.page-head p{line-height:1.8}
+.tips-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tip-card{position:relative}.tip-card>b{display:inline-grid;place-items:center;width:58px;height:58px;background:#edf2ff;border-radius:18px}
+.week{gap:8px}.day{transition:.2s}.day:hover{border-color:var(--primary);transform:translateY(-2px)}
+.routine-panel{border-radius:26px}.routine-panel label:hover{background:#f7f9ff}
+.exercise-img{background:radial-gradient(circle at 50% 45%,#fff 0 23%,transparent 24%),linear-gradient(135deg,#e0eaff,#f4efff)}
+.exercise{border-radius:25px}.exercise-body p{line-height:1.75}.exercise-body button{transition:.2s}.exercise-body button:hover,.tip-card button:hover{filter:brightness(.97);transform:translateY(-1px)}
+.quiz-page{background:linear-gradient(125deg,#eaf1ff,#f7f8ff,#f3edff)}
+.quiz-box{border:1px solid #ffffff20;background:linear-gradient(145deg,#111d3a,#1b2b50);border-radius:30px}
+.answer{transition:.2s}.answer:hover{border-color:#819dff;transform:translateX(3px)}
+.stats div{box-shadow:var(--shadow)}.stats div:hover{transform:translateY(-3px)}
+.chart-card{border-radius:26px}.cta{background:radial-gradient(circle at 90% 10%,#ffffff20,transparent 28%),linear-gradient(120deg,#172554,#315efb 65%,#6d4de6);box-shadow:0 18px 40px #1d3d8c20}
+footer{border-top:3px solid #315efb}
+.info-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+.info-chip{padding:17px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.7)}
+.info-chip strong{display:block;color:var(--primary);font-size:1.05rem;margin-bottom:3px}
+.info-chip span{font-size:.9rem;color:var(--muted)}
+.content-panel{padding:28px;border:1px solid var(--line);border-radius:22px;background:var(--card);box-shadow:var(--shadow);margin-top:22px}
+.content-panel h3{margin-bottom:8px}.content-panel p{color:var(--muted);line-height:1.8}
+.reading-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.reading-card{padding:23px;border-radius:20px;background:var(--card);border:1px solid var(--line)}
+.reading-card h3{margin:8px 0}.reading-card p{color:var(--muted)}
+.checklist-progress{height:9px;background:#e8edf6;border-radius:99px;overflow:hidden;margin:12px 0 18px}
+.checklist-progress div{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#7c3aed);transition:width .25s}
+.small-note{font-size:.88rem;color:var(--muted)}
+#videoModal{display:none}
+body.dark .hero{background:linear-gradient(125deg,#0c1830,#101a30 58%,#1c1735)}
+body.dark .page-head,body.dark .quiz-page{background:linear-gradient(125deg,#0c1830,#101a30 58%,#1c1735)}
+body.dark .info-chip{background:#111a2e}
+body.dark .routine-panel label:hover{background:#17243b}
+body.dark .exercise-img{background:linear-gradient(135deg,#17243b,#201b3d)}
+body.dark .reading-card{background:#111a2e;border-color:var(--line)}
+@media(max-width:1050px){.feature-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:950px){.header nav.open{z-index:25}.hero{gap:35px}.info-strip{grid-template-columns:1fr}}
+@media(max-width:600px){.feature-grid,.pillar-grid,.tips-grid,.reading-grid{grid-template-columns:1fr}.hero h1{letter-spacing:-1.2px}.hero-card{padding:28px 18px}.balance{width:220px;height:220px}.balance:after{width:155px;height:155px}.page-head{padding-top:60px}.content-panel{padding:20px}}
+
+
+@media(max-width:600px){.modal-box iframe{height:240px}.modal{padding:12px}.modal-box{padding:6px}}
+
+
+/* ===== Melhorias: impactos, dicas e exercícios ===== */
+.impact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:24px}
+.impact-card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:27px;box-shadow:var(--shadow);border-top:5px solid var(--primary)}
+.impact-card.body-impact{border-top-color:#16a36a}.impact-card.social-impact{border-top-color:#e5a11a}.impact-card.positive-impact{border-top-color:#7c3aed}
+.impact-kicker{font-size:.75rem;text-transform:uppercase;letter-spacing:1px;font-weight:900;color:var(--primary)}
+.impact-symbol{font-size:2.3rem;margin:8px 0}.impact-card h2{margin-bottom:8px}.impact-card>p{color:var(--muted);margin-bottom:18px}
+.impact-card details,.tip-card details{border-top:1px solid var(--line);padding:13px 0}
+.impact-card summary,.tip-card summary{font-weight:800;cursor:pointer;list-style:none;position:relative;padding-right:25px}
+.impact-card summary:after,.tip-card details summary:after{content:"＋";position:absolute;right:0;color:var(--primary);font-size:1.1rem}
+.impact-card details[open]>summary:after,.tip-card details[open]>summary:after{content:"−"}
+.impact-card details p,.tip-card details p{margin-top:9px;color:var(--muted);line-height:1.8}
+.references-panel{margin-top:25px}.reference-list{padding-left:20px;margin-top:12px}.reference-list li{margin:9px 0;color:var(--muted)}.reference-list a,.source-line a{color:var(--primary);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.tips-toolbar{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:22px;flex-wrap:wrap}
+.tips-expanded{grid-template-columns:repeat(2,minmax(0,1fr))}
+.tips-expanded .tip-card{padding:24px}.tips-expanded .tip-card>b{font-size:1rem;width:43px;height:43px;border-radius:14px}
+.tips-expanded .tip-card>p{margin-bottom:12px}.tip-card .source-line{font-size:.86rem}
+.tip-card button.done{background:#d9f8e8;color:#087443}
+.exercise-photo{display:block;width:100%;height:230px;object-fit:cover;background:#e8eef8}
+.exercise-body{padding:24px}.exercise-body p{margin:8px 0}.exercise-body p strong{color:var(--text)}
+body.dark .impact-card{background:var(--card)}body.dark .info-chip{color:var(--text)}
+body.dark .tip-card details,body.dark .impact-card details{border-color:var(--line)}
+@media(max-width:850px){.impact-grid,.tips-expanded{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+
+/* ===== Ícones, rotina personalizada, quiz ===== */
+.ic-l{margin-right:8px}.ic-r{margin-left:8px}.c-mental{color:#2563eb}.c-body{color:#15a56a}.c-social{color:#e5a11a}
+.balance i{font-size:1.9rem}.feature>i{display:inline-grid;place-items:center;width:58px;height:58px;border-radius:18px;background:#edf2ff;color:var(--primary);font-size:1.5rem}body.dark .feature>i{background:#17243b}
+.mental-impact .impact-symbol{color:#2563eb}.body-impact .impact-symbol{color:#16a36a}.social-impact .impact-symbol{color:#e5a11a}.positive-impact .impact-symbol{color:#7c3aed}
+.habit-icon{width:1.3em;text-align:center;margin-right:4px}.custom-title{margin-top:20px;font-size:.78rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.routine-panel .custom-habit{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line)}.routine-panel .custom-habit label{flex:1;border:0;word-break:break-word}
+.remove-habit{border:0;background:#ffe9e9;color:#a52323;width:36px;height:36px;border-radius:10px;cursor:pointer;flex:none}
+.add-habit{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}.add-habit .btn{margin-top:0}
+.routine-panel .add-habit input.habit-input{flex:1;min-width:200px;margin:0;transform:none;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--text);font:inherit}
+.routine-panel label.repeat-opt{border:0;padding:10px 2px 0;font-size:.88rem;color:var(--muted)}
+.quiz-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.quiz-box .badge{margin-bottom:0}
+.quiz-pillar{font-size:.8rem;font-weight:800;padding:6px 12px;border-radius:99px;background:#ffffff14}.qp-mental{color:#9db4ff}.qp-body{color:#34d399}.qp-social{color:#fbbf24}
+.quiz-stage{transition:opacity .25s ease,transform .25s ease}.quiz-stage.leaving{opacity:0;transform:translateX(-26px)}
+.quiz-stage.entering,.quiz-feedback.show,.quiz-result.anim{animation:quizIn .35s ease both}@keyframes quizIn{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+.answer{display:flex;align-items:center;gap:12px}.answer .mark{width:26px;height:26px;border-radius:50%;border:1.5px solid #ffffff40;display:grid;place-items:center;font-size:.75rem;flex:none}
+.answer.locked{pointer-events:none}.answer.locked:not(.chosen){opacity:.45}
+.answer.chosen.good{border-color:#34d399;background:#34d39922}.answer.chosen.mid{border-color:#fbbf24;background:#fbbf2420}.answer.chosen.warn{border-color:#fb923c;background:#fb923c22}
+.quiz-feedback{display:none;gap:12px;padding:15px 17px;border-radius:14px;margin-top:14px;background:#ffffff10;border-left:4px solid}
+.quiz-feedback.show{display:flex}.quiz-feedback.good{border-color:#34d399}.quiz-feedback.good i{color:#34d399}.quiz-feedback.mid{border-color:#fbbf24}.quiz-feedback.mid i{color:#fbbf24}.quiz-feedback.warn{border-color:#fb923c}.quiz-feedback.warn i{color:#fb923c}.quiz-feedback i{margin-top:5px}
+#quizNext{display:none}#quizNext.show{display:inline-block}
+.qr-head{text-align:center;margin-bottom:12px}.qr-score{font-size:3rem;font-weight:900;line-height:1.1}.pr{margin:16px 0}
+.pr-top{display:flex;justify-content:space-between;gap:10px;font-weight:700;margin-bottom:7px;flex-wrap:wrap}.pr-top small{font-weight:600;color:#aeb8ca}
+.pr-track{height:12px;background:#ffffff1c;border-radius:99px;overflow:hidden}.pr-fill{height:100%;width:0;border-radius:99px;transition:width 1s cubic-bezier(.22,.8,.3,1)}
+.pr-fill.mental{background:#6c8aff}.pr-fill.body{background:#34d399}.pr-fill.social{background:#fbbf24}.qr-focus{margin-top:18px;padding:14px 16px;border-radius:12px;background:#ffffff10}
+
+/* Ícones adicionais para navegação, dicas e acompanhamento */
+.header nav a i{width:16px;text-align:center;opacity:.9}
+.tip-card>b{color:var(--primary);font-size:1.25rem!important}
+.tip-card>b i{font-size:1.25rem}
+.stats div>span i{color:var(--primary)}
+.content-panel h3 i{font-size:1.05em}
+.danger i{vertical-align:middle}
+@media(max-width:950px){.header nav a{width:100%;text-align:left}}
+
+</style>
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/><style>
+i.fa-solid, i.fa-regular, i.fa-brands {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: -0.08em;
+}
+.tip-card > b .tip-icon {
+  font-size: 1.35rem;
+  font-weight: 400;
+}
+
+/* ===== Exercícios: vídeo inline e estado Concluído ===== */
+.exercise-body .video-container{position:relative;aspect-ratio:16/9;margin:16px 0 4px;border-radius:8px;overflow:hidden;background:#0b1120}
+.exercise-body .video-container iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.exercise-body .video-container.video-pendente{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#d0d5dd;text-align:center;padding:16px}
+.exercise-body .video-container.video-pendente a{color:#9db4ff;font-weight:700;text-decoration:underline}
+.exercise-body .btn-concluir{margin-top:18px;display:inline-flex;align-items:center;border:0;border-radius:10px;padding:11px 16px;background:#edf2ff;color:#315efb;font-weight:800;cursor:pointer;transition:.2s}
+.exercise-body .btn-concluir.done{background:#d9f8e8;color:#087443}
+.exercise-body .btn-concluir:focus-visible{outline:3px solid #315efb80;outline-offset:2px}
+.exercise-body .msg-sucesso{display:inline-block;margin:0 0 0 10px;color:#14804a;font-weight:700;font-size:.92rem}
+.exercise-body .msg-sucesso[hidden]{display:none}
+.exercise.concluido{border-color:#15a56a}
+body.dark .exercise-body .btn-concluir{background:#1b2a4d;color:#9db4ff}
+body.dark .exercise-body .btn-concluir.done{background:#12382a;color:#6ee7a8}
+body.dark .exercise-body .msg-sucesso{color:#6ee7a8}
+
+/* Font Awesome: nenhuma regra global de fonte pode sobrescrever os ícones */
+i.fa-solid,.fa-solid,.fas{font-family:"Font Awesome 6 Free"!important;font-weight:900!important;font-style:normal!important}
+i.fa-regular,.fa-regular,.far{font-family:"Font Awesome 6 Free"!important;font-weight:400!important;font-style:normal!important}
+i.fa-brands,.fa-brands,.fab{font-family:"Font Awesome 6 Brands"!important;font-weight:400!important;font-style:normal!important}
+
+/* ===== Centralização dos ícones dentro dos quadrados/containers ===== */
+.feature>i,.tip-card>b,.balance i,.hero-card i{margin:0;padding:0;line-height:1}
+/* quadrado do ícone nos cards da Home (o próprio <i> é a caixa de 58x58) */
+.feature>i{display:inline-flex!important;align-items:center!important;justify-content:center!important;line-height:1!important;margin:0!important;padding:0!important;flex:none}
+/* ícone das dicas: container alinha o <i> pelo centro vertical */
+.tip-card>b{display:flex!important;align-items:center!important;line-height:1!important}
+.tip-card>b i{display:inline-flex!important;align-items:center;justify-content:center;line-height:1!important;margin:0!important;padding:0!important}
+/* círculo "3 pilares" da Home */
+.balance i{display:inline-flex!important;align-items:center;justify-content:center;line-height:1!important;margin:0!important;padding:0!important}
+/* ícones do menu: caixa fixa e centralizada (mantém o espaçamento .ic-l do texto) */
+.header nav a i{display:inline-flex;align-items:center;justify-content:center;line-height:1}
+
+/* ===== Registro diário e Minha evolução ===== */
+.evo-card{margin-bottom:25px}
+.evo-hint{color:var(--muted);font-size:.92rem;margin:6px 0 14px}
+.evo-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:14px}
+.evo-form label{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:.92rem}
+.evo-form input[type=date],.evo-form input[type=number]{padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);font:inherit}
+.evo-habits{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-bottom:16px}
+.evo-habits label{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;cursor:pointer;font-weight:600}
+.evo-habits label:has(input:checked){border-color:#15a56a;background:#d9f8e822}
+.evo-habits input{width:18px;height:18px;accent-color:#15a56a}
+.evo-save,.evo-actions button{border:0;border-radius:10px;padding:12px 16px;font-weight:800;cursor:pointer;background:#edf2ff;color:#315efb}
+.evo-save{background:var(--primary);color:#fff}
+.evo-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.evo-actions .danger{margin-top:0;background:#ffe5e5;color:#a52323}
+.evo-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:10px 0}
+.evo-stats div{background:var(--bg);border-radius:12px;padding:14px;text-align:center}
+.evo-stats strong{display:block;font-size:1.6rem}
+.evo-stats span{color:var(--muted);font-size:.82rem}
+.evo-bars{display:flex;align-items:flex-end;gap:8px;height:190px;margin-top:16px;border-bottom:1px solid var(--line)}
+.evo-col{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;min-width:0}
+.evo-col .val{font-size:.75rem;font-weight:700}
+.evo-col .bar-fill{width:70%;max-width:42px;border-radius:8px 8px 0 0;background:#cbd5e1;min-height:3px}
+.evo-col .bar-fill.ok{background:linear-gradient(#6c63ff,#315efb)}
+.evo-col .bar-fill.good{background:linear-gradient(#34d399,#15a56a)}
+.evo-lbls{display:flex;gap:8px;margin-top:6px}.evo-lbls span{flex:1;text-align:center;font-size:.75rem;color:var(--muted)}
+.evo-empty{color:var(--muted);text-align:center;margin:14px 0}
+
+/* ===== Lembretes de pausa ===== */
+.pause-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:10px 6%;background:var(--card);border-bottom:1px solid var(--line);font-size:.9rem}
+.pause-timer{display:inline-flex;align-items:center;font-weight:600}
+.pause-timer strong{margin:0 4px;font-variant-numeric:tabular-nums}
+.pause-limit{display:inline-flex;align-items:center;gap:8px;font-weight:600}
+.pause-limit input{width:68px;padding:7px 8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text);font:inherit}
+.pause-bar button,.pause-actions button{border:0;border-radius:10px;padding:9px 14px;font-weight:800;cursor:pointer;background:var(--primary);color:#fff;font:inherit;font-weight:800}
+.pause-bar button.on{background:#d9f8e8;color:#087443;cursor:default}
+.pause-bar .pause-ghost,.pause-actions .pause-ghost{background:#edf2ff;color:#315efb}
+body.dark .pause-bar .pause-ghost,body.dark .pause-actions .pause-ghost{background:#1b2a4d;color:#9db4ff}
+.pause-modal{display:none;position:fixed;inset:0;background:#000b;z-index:60;align-items:center;justify-content:center;padding:20px}
+.pause-modal.show{display:flex}
+.pause-box{background:var(--card);color:var(--text);max-width:460px;width:100%;border-radius:20px;padding:30px;text-align:center;box-shadow:0 20px 60px #0008;border-top:6px solid var(--primary)}
+.pause-box h2{margin:10px 0 8px}.pause-box p{color:var(--muted);line-height:1.5}
+.pause-ico{font-size:2.6rem;color:var(--primary)}
+.pause-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:20px}
+</style></head>
+<body>
+<header class="header">
+<a class="logo" href="#home"><i class="fa-solid fa-scale-balanced ic-l"></i>Conect<span>Bem</span></a>
+<nav id="mainNav">
+<a data-page="home"><i class="fa-solid fa-house ic-l"></i>Início</a>
+<a data-page="impactos"><i class="fa-solid fa-chart-line ic-l"></i>Impactos</a>
+<a data-page="dicas"><i class="fa-solid fa-lightbulb ic-l"></i>Dicas</a>
+<a data-page="rotina"><i class="fa-solid fa-calendar-days ic-l"></i>Rotina</a>
+<a data-page="exercicios"><i class="fa-solid fa-dumbbell ic-l"></i>Exercícios</a>
+<a data-page="quiz"><i class="fa-solid fa-circle-question ic-l"></i>Quiz</a>
+<a data-page="progresso"><i class="fa-solid fa-chart-pie ic-l"></i>Progresso</a>
+</nav>
+<button aria-label="Alternar modo claro e escuro" class="theme" id="themeBtn"><i class="fa-solid fa-moon"></i></button>
+<button aria-label="Abrir menu de navegação" class="menu" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+</header>
+<div class="pause-bar" id="pauseBar" role="region" aria-label="Lembretes de pausa">
+<span class="pause-timer"><i class="fa-solid fa-stopwatch ic-l"></i>Tempo contínuo na página: <strong id="pauseElapsed">00:00</strong> / <span id="pauseLimitTxt">30</span> min</span>
+<label class="pause-limit">Limite (min)<input type="number" id="pauseLimit" min="1" max="180" step="1" value="30" inputmode="numeric"/></label>
+<button type="button" id="pauseEnable"><i class="fa-solid fa-bell ic-l"></i><span>Ativar lembretes de pausa saudável</span></button>
+<button type="button" id="pauseReset" class="pause-ghost" title="Zerar o cronômetro"><i class="fa-solid fa-rotate-left ic-l"></i>Zerar</button>
+</div>
+
+<div class="single-page-section active" id="home">
+<section class="hero">
+<div class="hero-text"><span class="badge">TCC • Técnico em Informática • 2026</span>
+<h1>Tecnologia no cotidiano: <span>equilíbrio para viver melhor.</span></h1>
+<p>Aprenda a utilizar a tecnologia de forma mais consciente, cuidando do bem-estar mental, corporal e social.</p>
+<div class="actions"><a class="btn" href="rotina.html">Começar minha rotina<i class="fa-solid fa-arrow-right ic-r"></i></a><a class="btn outline" href="impactos.html">Conhecer o tema</a></div>
+</div>
+<div class="hero-card"><div class="balance"><div><i class="fa-solid fa-brain c-mental"></i></div><div><i class="fa-solid fa-person-running c-body"></i></div><div><i class="fa-solid fa-handshake c-social"></i></div></div><h3>3 pilares do equilíbrio</h3><p>Mental • Corporal • Social</p></div>
+</section>
+<section class="section"><div class="title"><span>O que você encontra aqui</span><h2>Um espaço para cuidar da sua relação com a tecnologia.</h2></div>
+<div class="feature-grid">
+<a class="feature" href="impactos.html"><i class="fa-solid fa-brain"></i><h3>Entenda os impactos</h3><p>Conheça possíveis efeitos do uso excessivo e também os benefícios da tecnologia.</p></a>
+<a class="feature" href="dicas.html"><i class="fa-solid fa-lightbulb"></i><h3>Dicas práticas</h3><p>Pequenas mudanças para tornar sua rotina digital mais equilibrada.</p></a>
+<a class="feature" href="exercicios.html"><i class="fa-solid fa-person-running"></i><h3>Exercícios diários</h3><p>Atividades simples para incluir movimento no dia a dia.</p></a>
+<a class="feature" href="quiz.html"><i class="fa-solid fa-clipboard-list"></i><h3>Quiz educativo</h3><p>Reflita sobre seus hábitos e receba uma orientação ao final.</p></a>
+</div>
+<div class="info-strip">
+<div class="info-chip"><strong><i class="fa-solid fa-brain ic-l c-mental"></i>Bem-estar mental</strong><span>Mais foco, pausas e atenção aos próprios sentimentos.</span></div>
+<div class="info-chip"><strong><i class="fa-solid fa-person-running ic-l c-body"></i>Saúde corporal</strong><span>Movimento, postura confortável e descanso adequado.</span></div>
+<div class="info-chip"><strong><i class="fa-solid fa-handshake ic-l c-social"></i>Conexões reais</strong><span>Tecnologia como ponte para relações, não como substituta.</span></div>
+</div>
+<div class="content-panel">
+<h3><i class="fa-solid fa-scale-balanced ic-l c-mental"></i>Equilíbrio digital não significa abandonar a tecnologia</h3>
+<p>Celulares, computadores e redes sociais fazem parte dos estudos, do trabalho e da convivência. A proposta é perceber como você usa esses recursos e fazer escolhas conscientes: definir momentos de pausa, proteger o sono, movimentar o corpo e reservar tempo para conversar pessoalmente.</p>
+</div>
+</section>
+<section class="cta"><div><span>Seu progresso começa com pequenos passos.</span><h2>Que tal começar hoje?</h2><p>Escolha uma atitude simples e acompanhe sua evolução durante a semana.</p></div><a class="btn light" href="rotina.html">Montar minha rotina</a></section>
+</div>
+<div class="single-page-section" id="impactos">
+<section class="page-head">
+<span class="badge">01 • Conhecimento</span>
+<h1>Os impactos da tecnologia no <span>cotidiano.</span></h1>
+<p>A tecnologia não é boa ou ruim por si só. Seus efeitos dependem do contexto, do conteúdo acessado, do tempo de uso e de como ela se encaixa nas outras atividades da vida.</p>
+</section>
+<section class="section">
+<div class="content-panel"><h3><i class="fa-solid fa-eye ic-l c-mental"></i>Uma visão equilibrada</h3>
+<p>Celulares, computadores e plataformas digitais ajudam a estudar, trabalhar, conversar e acessar serviços. Ao mesmo tempo, o uso prolongado, as interrupções frequentes e a falta de pausas podem afetar o descanso, a atenção, o movimento e a convivência. As experiências variam entre pessoas: observe os sinais da sua rotina e faça ajustes possíveis, sem culpa.</p>
+</div>
+<div class="impact-grid">
+<article class="impact-card mental-impact">
+<span class="impact-kicker">01 • Saúde mental</span><div class="impact-symbol"><i class="fa-solid fa-brain"></i></div>
+<h2>Impactos mentais</h2>
+<p>O ambiente digital pode influenciar emoções, atenção e descanso. A experiência não é igual para todo mundo, mas alguns padrões merecem atenção.</p>
+<details open=""><summary>Ansiedade, comparações e redes sociais</summary><p>Atualizações constantes, busca por aprovação e a impressão de que outras pessoas vivem experiências sempre melhores podem gerar preocupação ou insatisfação. Fotos e publicações mostram recortes da vida, não a história completa. Uma atitude útil é selecionar conteúdos que fazem bem, deixar de seguir perfis que provocam desconforto e lembrar que cada pessoa tem uma realidade diferente.</p></details>
+<details><summary>Estresse e sobrecarga de informações</summary><p>Receber mensagens, notícias, vídeos e alertas sem intervalos pode deixar a mente ocupada o tempo todo. Quando muitas informações chegam ao mesmo tempo, fica mais difícil decidir o que merece atenção. Organize momentos específicos para consultar notícias e mensagens, priorize fontes confiáveis e faça pausas entre tarefas.</p></details>
+<details><summary>Concentração e distrações constantes</summary><p>Alternar repetidamente entre uma atividade e notificações interrompe o raciocínio e pode tornar o estudo mais demorado. Durante uma tarefa, experimente silenciar alertas não essenciais, deixar o celular fora do alcance e trabalhar em blocos com pequenas pausas planejadas.</p></details>
+<details><summary>Sono e recuperação mental</summary><p>Usar dispositivos até o momento de dormir pode prolongar o estado de alerta, especialmente quando o conteúdo é estimulante. Criar um horário de desaceleração, reduzir a luminosidade e deixar o aparelho longe da cama pode ajudar a proteger a rotina de sono. As necessidades de sono variam conforme a idade.</p></details>
+<details><summary>Como cuidar do bem-estar</summary><p>Observe se o uso digital está interferindo no humor, nos estudos, no lazer ou no descanso. Converse com alguém de confiança quando sentir dificuldade para equilibrar a rotina. Se o desconforto persistir ou atrapalhar atividades importantes, procure orientação de um profissional de saúde.</p></details>
+</article>
+<article class="impact-card body-impact">
+<span class="impact-kicker">02 • Saúde corporal</span><div class="impact-symbol"><i class="fa-solid fa-person-running"></i></div>
+<h2>Impactos corporais</h2>
+<p>O corpo também participa da experiência digital. Permanecer muito tempo na mesma posição reduz oportunidades de movimento e pode favorecer desconfortos.</p>
+<details open=""><summary>Sedentarismo e longos períodos sentado</summary><p>Estudar, jogar ou assistir a vídeos por muito tempo pode ocupar o espaço de atividades em movimento. A Organização Mundial da Saúde destaca a importância de limitar o comportamento sedentário e incluir atividade física na rotina. Levantar, caminhar pela casa ou brincar ao ar livre são formas simples de interromper períodos prolongados sentado.</p></details>
+<details><summary>Postura, dores musculares e desconforto</summary><p>Olhar para baixo por muito tempo, apoiar os braços de forma desconfortável ou usar uma cadeira sem apoio adequado pode contribuir para tensão no pescoço, ombros e costas. Ajuste a tela para uma altura confortável, apoie os pés quando possível, relaxe os ombros e varie a posição ao longo do dia.</p></details>
+<details><summary>Cansaço visual</summary><p>Ficar concentrado na tela por longos períodos pode causar sensação de olhos cansados, ressecamento ou dor de cabeça em algumas pessoas. Faça pausas visuais, pisque naturalmente, ajuste o brilho ao ambiente e mantenha uma distância confortável. Se os sintomas forem frequentes, converse com um profissional de saúde.</p></details>
+<details><summary>A importância das pausas e da atividade física</summary><p>Pequenas pausas ajudam a variar a postura e recuperar a atenção. Alongamentos leves, caminhada e atividades adequadas à idade e às condições de cada pessoa podem fazer parte do cotidiano. Não é necessário começar com uma rotina intensa: a regularidade e a segurança importam mais do que competir ou forçar o corpo.</p></details>
+</article>
+<article class="impact-card social-impact">
+<span class="impact-kicker">03 • Saúde social</span><div class="impact-symbol"><i class="fa-solid fa-handshake"></i></div>
+<h2>Impactos sociais</h2>
+<p>As ferramentas digitais aproximam pessoas distantes, mas precisam conviver com momentos de atenção e presença nas relações do dia a dia.</p>
+<details open=""><summary>Interação presencial e convivência familiar</summary><p>Quando o celular ocupa refeições, conversas ou encontros, as pessoas podem sentir que não estão recebendo atenção. Combinar momentos sem aparelhos — como durante uma refeição ou uma conversa importante — ajuda a criar espaço para escuta, troca e participação.</p></details>
+<details><summary>Comunicação e relacionamentos</summary><p>Mensagens facilitam o contato, mas textos curtos podem ser interpretados de maneiras diferentes e discussões online podem crescer rapidamente. Em assuntos delicados, prefira conversar com calma, esclarecer dúvidas e respeitar o tempo de resposta das outras pessoas.</p></details>
+<details><summary>Isolamento e comparação social</summary><p>O uso digital pode se tornar um problema quando substitui quase todos os encontros e atividades compartilhadas. Planejar atividades presenciais, participar de interesses em grupo e manter contato com pessoas de confiança ajuda a equilibrar os diferentes tipos de convivência.</p></details>
+<details><summary>Limites que protegem as relações</summary><p>Estabeleça acordos respeitosos com familiares e amigos: por exemplo, guardar o celular durante uma conversa ou avisar quando precisar interromper o encontro. Os limites funcionam melhor quando são combinados e aplicados com consideração mútua.</p></details>
+</article>
+<article class="impact-card positive-impact">
+<span class="impact-kicker">04 • Oportunidades</span><div class="impact-symbol"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+<h2>Impactos positivos</h2>
+<p>Com escolhas conscientes, a tecnologia amplia oportunidades e pode apoiar a aprendizagem, a saúde, a comunicação e a participação social.</p>
+<details open=""><summary>Comunicação e acesso ao conhecimento</summary><p>Aplicativos de mensagens e chamadas aproximam pessoas que vivem longe. Bibliotecas digitais, cursos, vídeos educativos e materiais acessíveis permitem explorar assuntos e aprender em diferentes ritmos. Verifique a autoria, a data e a confiabilidade das fontes antes de usar ou compartilhar informações.</p></details>
+<details><summary>Educação e desenvolvimento de habilidades</summary><p>Simuladores, plataformas de aprendizagem e ferramentas de criação podem apoiar projetos escolares e desenvolver competências digitais. Para aprender de verdade, use esses recursos como apoio: faça anotações, pratique sem consultar a resposta e explique o conteúdo com suas próprias palavras.</p></details>
+<details><summary>Medicina, inclusão e acessibilidade</summary><p>Recursos digitais podem apoiar a comunicação entre pacientes e serviços, a organização de informações e o acesso a conteúdos com legendas, leitores de tela e outras adaptações. A tecnologia não substitui o cuidado profissional, mas pode facilitar o acesso e a autonomia quando bem utilizada.</p></details>
+<details><summary>Oportunidades profissionais e tarefas cotidianas</summary><p>Ferramentas digitais ajudam a organizar compromissos, colaborar em projetos, criar portfólios e conhecer áreas profissionais. Também simplificam serviços e tarefas do dia a dia. Desenvolver pensamento crítico, criatividade e responsabilidade digital ajuda a aproveitar essas oportunidades.</p></details>
+</article>
+</div>
+<div class="content-panel references-panel">
+<h3><i class="fa-solid fa-book-open ic-l c-mental"></i>Fontes para aprofundar</h3>
+<p>As referências abaixo sustentam orientações gerais sobre atividade física, bem-estar digital, educação midiática e sono. Elas não significam que todos os efeitos ocorram com todas as pessoas.</p>
+<ul class="reference-list">
+<li><strong>Organização Mundial da Saúde (OMS)</strong> — <a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" rel="noopener" target="_blank">Physical activity</a>.</li>
+<li><strong>Governo Federal / Secretaria de Comunicação Social</strong> — <a href="https://www.gov.br/secom/pt-br/assuntos/uso-de-telas-por-criancas-e-adolescentes/guia/capitulos/bem-estar-digital" rel="noopener" target="_blank">Guia sobre Usos de Dispositivos Digitais: Bem-estar digital</a>.</li>
+<li><strong>UNESCO</strong> — <a href="https://www.unesco.org/en/ami" rel="noopener" target="_blank">Media and Information Literacy (MIL)</a>.</li>
+<li><strong>Ministério da Saúde / Biblioteca Virtual em Saúde</strong> — <a href="https://bibliosus.saude.gov.br/durma-bem-viva-melhor-13-3-dia-mundial-do-sono-2026/" rel="noopener" target="_blank">Durma bem, viva melhor</a>.</li>
+</ul>
+</div>
+</section>
+</div>
+<div class="single-page-section" id="dicas">
+<section class="page-head"><span class="badge">02 • Orientação</span><h1>Hábitos digitais mais <span>saudáveis.</span></h1><p>Explore as orientações, abra os cartões para conhecer os motivos e escolha pequenas ações que façam sentido para sua realidade.</p></section>
+<section class="section">
+<div class="tips-toolbar"><p><strong>12 orientações práticas</strong> • Você pode marcar cada dica como concluída e acompanhar seu progresso.</p><span class="small-note" id="tipsCounter">0 de 12 concluídas</span></div>
+<div class="tips-grid tips-expanded">
+<article class="tip-card"><b><i aria-hidden="true" class="fa-solid fa-mobile-screen-button tip-icon"></i></b><h3>Reduza o tempo excessivo de tela</h3><p>Observe quais aplicativos ocupam mais tempo e se esse uso está substituindo sono, estudo, lazer ou convivência.</p><details><summary>Ver como colocar em prática</summary><p>Consulte o relatório de tempo de uso do aparelho, defina limites realistas e escolha horários para atividades offline. Reduza aos poucos, sem tentar mudar tudo de uma vez.</p><p><strong>Por que importa:</strong> o equilíbrio depende de preservar espaço para descanso, movimento e relações. <strong>Benefícios possíveis:</strong> mais consciência sobre a rotina e melhor distribuição do tempo.</p><p class="source-line">Fonte: <a href="https://www.gov.br/secom/pt-br/assuntos/uso-de-telas-por-criancas-e-adolescentes/guia/capitulos/bem-estar-digital" rel="noopener" target="_blank">Governo Federal — Bem-estar digital</a>.</p></details><button onclick="saveTip('Reduza o tempo excessivo de tela',this)"><i class="fa-solid fa-check ic-l"></i>Marcar como feito</button></article>
+<article class="tip-card"><b><i aria-hidden="true" class="fa-solid fa-desktop tip-icon"></i></b><h3>Organize pausas no computador</h3><p>Interrompa períodos longos de concentração para mudar de posição, descansar a visão e movimentar o corpo.</p><details><summary>Ver como colocar em prática</summary><p>Use um lembrete discreto para levantar entre tarefas. Caminhe um pouco, alongue-se suavemente ou olhe para um ponto distante. Adapte a frequência à atividade e às suas necessidades.</p><p><strong>Por que importa:</strong> ficar muito tempo na mesma posição pode favorecer desconfortos. <strong>Benefícios possíveis:</strong> variar a postura, aliviar a sensação de cansaço e retomar a atenção.</p><p class="source-line">Fonte: <a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" rel="noopener" target="_blank">OMS — Physical activity</a>.</p></details><button onclick="saveTip('Organize pausas no computador',this)"><i class="fa-solid fa-check ic-l"></i>Marcar como feito</button></article>
+<article class="tip-card"><b><i aria-hidden="true" class="fa-solid fa-moon tip-icon"></i></b><h3>Cuide da qualidade do sono</h3><p>Crie um período de desaceleração antes de dormir e evite levar notificações e conteúdos agitados para a hora do descanso.</p><details><summary>Ver como colocar em prática</summary><p>Tente manter horários regulares, reduza o brilho e as atividades estimulantes à noite e deixe o celular fora do alcance da cama quando possível. Ajuste a rotina à sua idade e às suas necessidades.</p><p><strong>Por que importa:</strong> o sono participa da recuperação física, da memória e da atenção. <strong>Benefícios possíveis:</strong> uma rotina noturna mais tranquila e maior regularidade do descanso.</p><p class="source-line">Fonte: <a href="https://bibliosus.saude.gov.br/durma-bem-viva-melhor-13-3-dia-mundial-do-sono-2026/" rel="noopener" target="_blank">Ministério da Saúde — Durma bem, viva melhor</a>.</p></details><button onclick="saveTip('Cuide da qualidade do sono',this)"><i class="fa-solid fa-check ic-l"></i>Marcar como feito</button></article>
+<article class="tip-card"><b><i aria-hidden="true" class="fa-solid fa-bell-slash tip-icon"></i></b><h3>Evite distrações de notificações</h3><p>Alertas frequentes podem interromper tarefas e dificultar a concentração, mesmo quando não são urgentes.</p><details><summary>Ver como colocar em prática</summary><p>Desative notificações não essenciais, use o modo foco durante estudos e combine horários para conferir mensagens. Mantenha disponíveis os contatos realmente importantes.</p><p><strong>Por que importa:</strong> menos interrupções ajudam a manter o raciocínio. <strong>Benefícios possíveis:</strong> estudo mais organizado e maior atenção à atividade atual.</p><p class="source-line">Fonte: <a href="https://www.unesco.org/en/ami" rel="noopener" target="_blank">UNESCO — Media and Information Literacy</a>.</p></details><button onclick="saveTip('Evite distrações de notificações',this)"><i class="fa-solid fa-check ic-l"></i>Marcar como feito</button></article>
+<article class="tip-card"><b><i aria-hidden="true" class="fa-solid fa-chair tip-icon"></i></b><h3>Adote uma postura confortável</h3><p>Organize o espaço para evitar posições desconfortáveis durante o uso de celular ou computador.</p><details><summary>Ver como colocar em prática</summary><p>Deixe a tela em uma altura que permita olhar sem inclinar demais o pescoço, apoie os pés quando possível, mantenha os ombros relaxados e varie a posição. Não existe uma postura rígida que precise ser mantida o dia inteiro.</p><p><strong>Por que importa:</strong> posições mantidas por muito tempo podem gerar tensão. <strong>Benefícios possíveis:</strong> mais conforto e percepção precoce de desconfortos.</p><p class="source-line">Fonte relacionada: <a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" rel="noopener" target="_blank">OMS — Physical activity</a>.</p></details><button onclick="saveTip('Adote uma postura confortável',this)"><i class="fa-solid fa-check ic-l"></i>Marcar como feito</button></article>
+<article class="tip-card"><b><i aria-hidden="true" class="fa-solid fa-person-walking tip-icon"></i></b><h3>Inclua movimento no dia</h3><p>Não deixe que estudo, jogos ou entretenimento ocupem todos os momentos que poderiam incluir movimento.</p><details><summary>Ver como colocar em prática</summary><p>Faça pequenas caminhadas, ajude em tarefas domésticas, dance, brinque ou pratique uma atividade de que goste. Escolha opções adequadas à sua idade, condição física e ambiente.</p><p><strong>Por que importa:</strong> a OMS recomenda atividade física regular e limitar o comportamento sedentário. <strong>Benefícios possíveis:</strong> apoiar a saúde, disposição e bem-estar geral.</p><p class="source-line">Fonte: <a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" rel="noopener" target="_blank">OMS — Physical activity</a>.</p></details><button onclick="saveTip('Inclua movimento no dia',this)"><i class="fa-solid fa-check ic-l"></i>Marcar como feito</button></article>
+<article class="tip-card"><b><i aria-hidden="true" class="fa-solid fa-users tip-icon"></i></b><h3>Equilibre redes sociais e vida real</h3><p>Redes sociais podem informar e aproximar, mas não precisam ocupar todos os intervalos do dia.</p><details><summary>Ver como colocar em prática</summary><p>Escolha momentos para acessar as plataformas, faça pausas e mantenha atividades de lazer que não dependam de tela. Lembre-se de que publicações representam recortes selecionados da vida.</p><p><strong>Por que importa:</strong> comparar a própria rotina com conteúdos editados pode afetar a percepção sobre si. <strong>Benefícios possíveis:</strong> uso mais intencional e tempo para outros interesses.</p><p class="source-line">Fonte: <a href="https://www.unicef.org/brazil/como-garantir-seguranca-do-seu-filho-online" rel="noopener" target="_blank">UNICEF — Como garantir experiências on-line positivas e seguras</a>.</p></details><button onclick="saveTip('Equilibre redes sociais e vida real',this)"><i class="fa-solid fa-check ic-l"></i>Marcar como feito</button></article>
+<article class="tip-card"><b><i aria-hidden="true" class="fa-solid fa-comments tip-icon"></i></b><h3>Preserve os relacionamentos pessoais</h3><p>Dê atenção às pessoas que estão com você e use os recursos digitais para complementar, não substituir, o contato.</p><details><summary>Ver como colocar em prática</summary><p>Combine refeições ou conversas sem celular, escute sem interromper para olhar notificações e proponha atividades compartilhadas. Respeite também os limites e preferências das outras pessoas.</p><p><strong>Por que importa:</strong> a convivência depende de presença, escuta e troca. <strong>Benefícios possíveis:</strong> conversas mais atentas e fortalecimento dos vínculos.</p><p class="source-line">Fonte: <a href="https://www.gov.br/secom/pt-br/assuntos/uso-de-telas-por-criancas-e-adolescentes/guia/capitulos/bem-estar-digital" rel="noopener" target="_blank">Governo Federal — Bem-estar digital</a>.</p></details><button onclick="saveTip('Preserve os relacionamentos pessoais',this)"><i class="fa-solid fa-check ic-l"></i>Marcar como feito</button></article>
+<article class="tip-card"><b><i aria-hidden="true" class="fa-solid fa-book-open tip-icon"></i></b><h3>Use a tecnologia nos estudos com equilíbrio</h3><p>Plataformas, vídeos e ferramentas digitais podem apoiar a aprendizagem quando existe um objetivo claro.</p><details><summary>Ver como colocar em prática</summary><p>Antes de abrir o navegador, defina o que precisa aprender. Separe materiais, silencie alertas e faça anotações com suas próprias palavras. Alterne pesquisa digital com leitura, prática e revisão.</p><p><strong>Por que importa:</strong> consumir conteúdo não é o mesmo que compreender. <strong>Benefícios possíveis:</strong> aprendizagem mais ativa, organização e autonomia.</p><p class="source-line">Fonte: <a href="https://www.unesco.org/en/media-information-literacy/global-communication-learning" rel="noopener" target="_blank">UNESCO — Media and Information Literacy for Global Communication and Learning</a>.</p></details><button onclick="saveTip('Use a tecnologia nos estudos com equilíbrio',this)"><i class="fa-solid fa-check ic-l"></i>Marcar como feito</button></article>
+<article class="tip-card"><b><i aria-hidden="true" class="fa-solid fa-newspaper tip-icon"></i></b><h3>Evite a sobrecarga de informações</h3><p>Ter acesso a muitas notícias e conteúdos não significa que seja necessário acompanhar tudo em tempo real.</p><details><summary>Ver como colocar em prática</summary><p>Escolha fontes confiáveis, limite consultas repetitivas, confira a data e a origem das publicações e reserve momentos para se informar. Antes de compartilhar, procure confirmação em outras fontes.</p><p><strong>Por que importa:</strong> avaliar informações reduz a chance de espalhar conteúdos enganosos e ajuda a priorizar o que é relevante. <strong>Benefícios possíveis:</strong> mais clareza e pensamento crítico.</p><p class="source-line">Fonte: <a href="https://www.unesco.org/en/ami" rel="noopener" target="_blank">UNESCO — Media and Information Literacy</a>.</p></details><button onclick="saveTip('Evite a sobrecarga de informações',this)"><i class="fa-solid fa-check ic-l"></i>Marcar como feito</button></article>
+<article class="tip-card"><b><i aria-hidden="true" class="fa-solid fa-robot tip-icon"></i></b><h3>Use inteligência artificial com autonomia</h3><p>Ferramentas de IA podem ajudar a organizar ideias e explicar assuntos, mas suas respostas precisam ser avaliadas.</p><details><summary>Ver como colocar em prática</summary><p>Peça explicações, exemplos e caminhos de estudo; depois confira as informações em fontes confiáveis, identifique possíveis erros e escreva sua própria resposta. Não compartilhe dados pessoais ou informações privadas.</p><p><strong>Por que importa:</strong> a ferramenta pode errar ou apresentar informações incompletas. <strong>Benefícios possíveis:</strong> desenvolver pensamento crítico e usar a IA como apoio, não como substituta da aprendizagem.</p><p class="source-line">Fonte: <a href="https://www.unesco.org/en/ami" rel="noopener" target="_blank">UNESCO — Media and Information Literacy</a>.</p></details><button onclick="saveTip('Use inteligência artificial com autonomia',this)"><i class="fa-solid fa-check ic-l"></i>Marcar como feito</button></article>
+<article class="tip-card"><b><i aria-hidden="true" class="fa-solid fa-shield-heart tip-icon"></i></b><h3>Reconheça hábitos digitais prejudiciais</h3><p>Preste atenção quando o uso começa a atrapalhar compromissos, descanso, estudos ou relações.</p><details><summary>Ver como colocar em prática</summary><p>Observe como você se sente antes e depois de usar um aplicativo. Perceba se perde a noção do tempo, adia tarefas importantes ou sente dificuldade de parar. Converse com alguém de confiança e experimente mudanças graduais.</p><p><strong>Por que importa:</strong> reconhecer padrões permite agir antes que eles ocupem espaço demais na rotina. <strong>Benefícios possíveis:</strong> mais autonomia e escolhas conscientes.</p><p class="source-line">Fonte: <a href="https://www.gov.br/secom/pt-br/assuntos/uso-de-telas-por-criancas-e-adolescentes/guia/capitulos/bem-estar-digital" rel="noopener" target="_blank">Governo Federal — Bem-estar digital</a>.</p></details><button onclick="saveTip('Reconheça hábitos digitais prejudiciais',this)"><i class="fa-solid fa-check ic-l"></i>Marcar como feito</button></article>
+</div>
+<div class="content-panel"><h3><i class="fa-solid fa-bullseye ic-l c-mental"></i>Desafio: escolha apenas uma mudança</h3><p>Não é necessário transformar toda a rotina de uma vez. Escolha uma dica, teste por alguns dias e observe se ela ajudou. Ajuste o plano conforme sua realidade.</p></div>
+</section></div>
+<div class="single-page-section" id="rotina"><section class="page-head"><span class="badge">03 • Minha semana</span><h1>Monte sua <span>rotina equilibrada.</span></h1><p>Escolha um dia, registre pequenas ações e crie hábitos só seus. Seus dados ficam salvos neste navegador.</p></section>
+<section class="section"><div class="week" id="week"></div><div class="routine-panel"><h2 id="dayTitle">Segunda-feira</h2><p>Marque o que você realizou hoje:</p><div class="checklist-progress"><div id="routineProgress"></div></div><p class="small-note" id="routineCount">0 de 5 hábitos marcados</p><label><input data-r="mental" type="checkbox"/><i class="fa-solid fa-brain habit-icon c-mental"></i> Fiz uma pausa mental</label><label><input data-r="body" type="checkbox"/><i class="fa-solid fa-person-running habit-icon c-body"></i> Fiz uma atividade/movimento</label><label><input data-r="social" type="checkbox"/><i class="fa-solid fa-handshake habit-icon c-social"></i> Tive um momento de convivência</label><label><input data-r="screen" type="checkbox"/><i class="fa-solid fa-mobile-screen-button habit-icon"></i> Tive um período sem tela</label><label><input data-r="sleep" type="checkbox"/><i class="fa-solid fa-moon habit-icon"></i> Cuidei da minha rotina de sono</label><p class="custom-title" hidden="" id="customTitle">Meus hábitos</p><div id="customHabits"></div><div class="add-habit"><input aria-label="Nome do novo hábito" class="habit-input" id="newHabit" maxlength="60" placeholder="Ex.: Beber um copo de água" type="text"/><button class="btn" id="addHabit" type="button"><i class="fa-solid fa-plus ic-l"></i>Adicionar hábito</button></div><label class="repeat-opt"><input id="repeatAll" type="checkbox"/> Repetir este hábito em todos os dias da semana</label><button class="btn" id="saveRoutine"><i class="fa-solid fa-floppy-disk ic-l"></i>Salvar dia</button><p class="saved" id="saved"></p></div></section></div>
+<div class="single-page-section" id="exercicios">
+<section class="page-head"><span class="badge">04 • Movimento</span><h1>Movimente-se no seu <span>ritmo.</span></h1><p>Atividades simples para incluir movimento e interromper períodos prolongados sentado. Os tempos são sugestões gerais, não metas obrigatórias.</p></section>
+<section class="section">
+<div class="content-panel" style="margin-bottom:24px"><h3><i class="fa-solid fa-film ic-l"></i>Demonstrações em vídeo</h3><p>Cada exercício traz um vídeo demonstrativo. Assista e, ao terminar, toque em “Marcar como feito”. As imagens são fotografias ilustrativas; pratique apenas movimentos confortáveis e adequados para você.</p></div>
+<div class="exercise-grid">
+<article class="exercise"><img alt="Pessoa realizando alongamento em um ambiente claro" class="exercise-photo" loading="lazy" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&amp;fit=crop&amp;w=900&amp;q=85"/><div class="exercise-body"><span>01 • 30–60 segundos</span><h2>Alongamento dos braços</h2><p>Eleve os braços acima da cabeça e alongue suavemente, sem prender a respiração ou forçar as articulações.</p><p><strong>Benefícios:</strong> ajuda a variar a posição e aliviar a sensação de rigidez após ficar sentado.</p><p><strong>Tempo sugerido:</strong> 30 a 60 segundos, respeitando o conforto.</p><div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/XBTRgOoVx4E" title="Demonstração: Alongamento dos braços" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><button type="button" class="btn-concluir" data-exercise="Alongamento dos braços" aria-pressed="false"><i class="fa-solid fa-check ic-l"></i><span class="btn-label">Marcar como feito</span></button><span class="msg-sucesso" role="status" hidden>Exercício concluído! Ótimo trabalho.</span></div></article>
+<article class="exercise"><img alt="Pessoa caminhando em área externa" class="exercise-photo" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&amp;fit=crop&amp;w=900&amp;q=85'" src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&amp;fit=crop&amp;w=900&amp;q=85"/><div class="exercise-body"><span>02 • 5–10 minutos</span><h2>Caminhada leve</h2><p>Caminhe em ritmo confortável, em local seguro e adequado. Dentro de casa, caminhar pelo corredor também pode ser uma opção.</p><p><strong>Benefícios:</strong> interrompe o tempo sentado e acrescenta movimento à rotina.</p><p><strong>Tempo sugerido:</strong> comece com 5 minutos e ajuste conforme sua disposição.</p><div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/yvz5RccVxRc" title="Demonstração: Caminhada leve" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><button type="button" class="btn-concluir" data-exercise="Caminhada" aria-pressed="false"><i class="fa-solid fa-check ic-l"></i><span class="btn-label">Marcar como feito</span></button><span class="msg-sucesso" role="status" hidden>Exercício concluído! Ótimo trabalho.</span></div></article>
+<article class="exercise"><img alt="Pessoa praticando exercício físico" class="exercise-photo" loading="lazy" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&amp;fit=crop&amp;w=900&amp;q=85"/><div class="exercise-body"><span>03 • 8–12 repetições opcionais</span><h2>Sentar e levantar</h2><p>Use uma cadeira firme encostada em uma parede. Levante e sente devagar, mantendo o movimento controlado. Se precisar, use as mãos como apoio.</p><p><strong>Benefícios:</strong> movimenta pernas e quadris e trabalha ações comuns do cotidiano.</p><p><strong>Tempo sugerido:</strong> uma sequência curta, com descanso sempre que necessário.</p><div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/PuB_R_oA8GU" title="Demonstração: Sentar e levantar" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><button type="button" class="btn-concluir" data-exercise="Sentar e levantar" aria-pressed="false"><i class="fa-solid fa-check ic-l"></i><span class="btn-label">Marcar como feito</span></button><span class="msg-sucesso" role="status" hidden>Exercício concluído! Ótimo trabalho.</span></div></article>
+<article class="exercise"><img alt="Pessoa fazendo movimento suave de alongamento" class="exercise-photo" loading="lazy" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&amp;fit=crop&amp;w=900&amp;q=85"/><div class="exercise-body"><span>04 • 20–30 segundos</span><h2>Pausa para pescoço e ombros</h2><p>Relaxe os ombros e incline a cabeça levemente para cada lado, sem puxar com as mãos e sem fazer movimentos bruscos.</p><p><strong>Benefícios:</strong> oferece uma pausa para mudar a posição e perceber tensões acumuladas.</p><p><strong>Tempo sugerido:</strong> alguns segundos de cada lado, sem desconforto.</p><div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/-pWY9tEHXeo" title="Demonstração: Pausa para pescoço e ombros" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><button type="button" class="btn-concluir" data-exercise="Pausa para pescoço" aria-pressed="false"><i class="fa-solid fa-check ic-l"></i><span class="btn-label">Marcar como feito</span></button><span class="msg-sucesso" role="status" hidden>Exercício concluído! Ótimo trabalho.</span></div></article>
+<article class="exercise"><img alt="Pessoa praticando atividade física em casa" class="exercise-photo" loading="lazy" src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&amp;fit=crop&amp;w=900&amp;q=85"/><div class="exercise-body"><span>05 • 1–2 minutos</span><h2>Marcha parada</h2><p>Em pé, marche suavemente no mesmo lugar, alternando os pés e mantendo um apoio próximo caso precise de equilíbrio.</p><p><strong>Benefícios:</strong> acrescenta movimento à pausa e pode ajudar a despertar o corpo depois de um período sentado.</p><p><strong>Tempo sugerido:</strong> 1 a 2 minutos em ritmo confortável.</p><div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/34T_6eW29kY" title="Demonstração: Marcha parada" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><button type="button" class="btn-concluir" data-exercise="Marcha parada" aria-pressed="false"><i class="fa-solid fa-check ic-l"></i><span class="btn-label">Marcar como feito</span></button><span class="msg-sucesso" role="status" hidden>Exercício concluído! Ótimo trabalho.</span></div></article>
+<article class="exercise"><img alt="Pessoa fazendo exercício de mobilidade" class="exercise-photo" loading="lazy" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&amp;fit=crop&amp;w=900&amp;q=85"/><div class="exercise-body"><span>06 • 30–60 segundos</span><h2>Elevação de panturrilhas</h2><p>Fique em pé próximo a uma parede ou cadeira firme. Eleve os calcanhares devagar e retorne ao chão, usando apoio para manter o equilíbrio.</p><p><strong>Benefícios:</strong> movimenta tornozelos e pernas durante uma pausa ativa.</p><p><strong>Tempo sugerido:</strong> uma sequência curta e confortável, com intervalos.</p><div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/3UWi44yN-wE" title="Demonstração: Elevação de panturrilhas" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><button type="button" class="btn-concluir" data-exercise="Elevação de panturrilhas" aria-pressed="false"><i class="fa-solid fa-check ic-l"></i><span class="btn-label">Marcar como feito</span></button><span class="msg-sucesso" role="status" hidden>Exercício concluído! Ótimo trabalho.</span></div></article>
+</div>
+<div class="notice"><i class="fa-solid fa-triangle-exclamation ic-l"></i>Faça os movimentos em espaço livre e seguro. Não force alongamentos nem continue se sentir dor, tontura ou mal-estar. Se tiver alguma condição de saúde, limitação ou dúvida, converse com um profissional de saúde ou educação física antes de iniciar. Estas sugestões não substituem orientação individualizada.</div>
+<div class="content-panel"><h3><i class="fa-solid fa-person-walking ic-l c-body"></i>Movimento também é pausa digital</h3><p>Levantar para beber água, caminhar alguns minutos, brincar ou ajudar em uma tarefa doméstica são alternativas para quebrar longos períodos sentado. A OMS destaca que alguma atividade é melhor do que nenhuma e recomenda reduzir o comportamento sedentário.</p><p class="source-line">Referência: <a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" rel="noopener" target="_blank">Organização Mundial da Saúde — Physical activity</a>.</p></div>
+</section></div>
+<div class="single-page-section" id="quiz"><section class="quiz-page"><div class="quiz-box"><div class="quiz-top"><span class="badge">05 • Reflexão</span><span class="quiz-pillar" id="quizPillar"></span></div><div class="progress"><div id="quizBar"></div></div><p id="quizNumber">Pergunta 1 de 11</p><div class="quiz-stage" id="quizStage"><h1 id="question"></h1><div id="answers"></div><div aria-live="polite" class="quiz-feedback" id="quizFeedback"></div><button class="btn" id="quizNext" type="button"></button></div><div id="quizResult"></div><button class="btn restart" id="restart"><i class="fa-solid fa-rotate-right ic-l"></i>Refazer quiz</button></div></section></div>
+<div class="single-page-section" id="progresso"><section class="page-head"><span class="badge">06 • Acompanhamento</span><h1>Seu <span>progresso.</span></h1><p>Veja seus registros de hábitos, dicas e exercícios concluídos neste navegador.</p></section>
+<section class="section"><div class="stats"><div><strong id="days">0</strong><span><i class="fa-solid fa-calendar-days ic-l"></i>dias registrados</span></div><div><strong id="tips">0</strong><span><i class="fa-solid fa-lightbulb ic-l"></i>dicas concluídas</span></div><div><strong id="exercises">0</strong><span><i class="fa-solid fa-person-running ic-l"></i>exercícios concluídos</span></div></div>
+<div class="chart-card evo-card" id="registroCard"><h2><i class="fa-solid fa-pen-to-square ic-l c-mental"></i>Registro diário</h2>
+<p class="evo-hint">Anote seu dia: o tempo de tela estimado e os hábitos que você cumpriu. Fica salvo neste navegador.</p>
+<div class="evo-form"><label>Data<input type="date" id="evoDate"/></label>
+<label>Tempo de tela estimado (horas)<input type="number" id="evoScreen" min="0" max="24" step="0.25" placeholder="ex.: 5,5"/></label></div>
+<div class="evo-habits" id="evoHabits">
+<label><input type="checkbox" value="pausas"/><span><i class="fa-solid fa-hourglass-half ic-l"></i>Fiz pausas durante o uso</span></label>
+<label><input type="checkbox" value="exercicios"/><span><i class="fa-solid fa-dumbbell ic-l"></i>Fiz exercícios</span></label>
+<label><input type="checkbox" value="refeicoes"/><span><i class="fa-solid fa-utensils ic-l"></i>Sem telas nas refeições</span></label>
+<label><input type="checkbox" value="sono"/><span><i class="fa-solid fa-bed ic-l"></i>Sem telas antes de dormir</span></label></div>
+<button type="button" class="evo-save" id="evoSave"><i class="fa-solid fa-floppy-disk ic-l"></i>Salvar registro do dia</button></div>
+<div class="chart-card evo-card" id="evolucaoCard"><h2><i class="fa-solid fa-arrow-trend-down ic-l c-body"></i>Minha evolução</h2>
+<div class="evo-stats"><div><strong id="evoStreak">0</strong><span>dias seguidos (sequência atual)</span></div><div><strong id="evoBest">0</strong><span>melhor sequência</span></div><div><strong id="evoAvg">–</strong><span>média de tela (7 dias)</span></div><div><strong id="evoDelta">–</strong><span>variação de tela</span></div></div>
+<p class="evo-hint">Um dia conta na sequência quando você cumpre 3 ou mais dos 4 hábitos. A variação compara o primeiro e o último registro dos últimos 7 dias.</p>
+<div class="evo-bars" id="evoBars"></div><p class="evo-empty" id="evoEmpty">Ainda não há registros. Salve o primeiro acima para ver sua evolução.</p>
+<div class="evo-actions"><button type="button" id="evoExport"><i class="fa-solid fa-file-arrow-down ic-l"></i>Exportar meu progresso</button><button type="button" class="danger evo-reset" id="evoReset"><i class="fa-solid fa-rotate-left ic-l"></i>Resetar histórico</button></div></div>
+<div class="chart-card"><h2><i class="fa-solid fa-chart-column ic-l c-mental"></i>Equilíbrio semanal</h2><div class="bars" id="bars"></div><div class="legend"><span><i class="fa-solid fa-brain ic-l c-mental"></i>Mental</span><span><i class="fa-solid fa-person-running ic-l c-body"></i>Corporal</span><span><i class="fa-solid fa-handshake ic-l c-social"></i>Social</span></div></div>
+<button class="danger" id="clearData"><i class="fa-solid fa-trash-can ic-l"></i>Limpar meus dados locais</button></section></div>
+<div aria-label="Vídeo demonstrativo" aria-modal="true" class="modal" id="videoModal" role="dialog">
+<div class="modal-box"><button aria-label="Fechar vídeo" class="close" id="closeVideo">×</button><iframe allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="" id="videoFrame" title="Vídeo demonstrativo"></iframe></div>
+</div>
+<div class="pause-modal" id="pauseModal" role="alertdialog" aria-modal="true" aria-labelledby="pauseTitle" aria-describedby="pauseText">
+<div class="pause-box"><i class="fa-solid fa-hand-holding-heart pause-ico"></i><h2 id="pauseTitle">Hora de descansar a tela no ConectBem!</h2>
+<p id="pauseText">Você atingiu seu limite de tempo. Que tal se afastar da tela, beber água e fazer um alongamento?</p>
+<div class="pause-actions"><button type="button" id="pauseGo"><i class="fa-solid fa-dumbbell ic-l"></i>Ir para Exercícios</button><button type="button" class="pause-ghost" id="pauseDone"><i class="fa-solid fa-check ic-l"></i>Já fiz uma pausa</button></div></div></div>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
+<footer><i class="fa-solid fa-scale-balanced ic-l"></i><strong>ConectBem</strong><br/><small>Projeto educativo sobre tecnologia no cotidiano.</small><br/><small>Informações gerais para reflexão; não substituem orientação profissional de saúde.</small></footer>
+<script>
+const themeBtn=document.getElementById("themeBtn"),menuBtn=document.getElementById("menuBtn"),nav=document.querySelector(".header nav");
+if(localStorage.getItem("theme")==="dark"){document.body.classList.add("dark");}
+themeBtn?.addEventListener("click",()=>{document.body.classList.toggle("dark");localStorage.setItem("theme",document.body.classList.contains("dark")?"dark":"light");setThemeIcon()});
+function setThemeIcon(){if(themeBtn)themeBtn.innerHTML=document.body.classList.contains("dark")?'<i class="fa-solid fa-sun"></i>':'<i class="fa-solid fa-moon"></i>'}setThemeIcon();
+menuBtn?.addEventListener("click",()=>nav?.classList.toggle("open"));
+function saveTip(name,button){let tips=JSON.parse(localStorage.getItem("tips")||"[]");const alreadyDone=tips.includes(name);if(!alreadyDone){tips.push(name);localStorage.setItem("tips",JSON.stringify(tips))}if(button){button.classList.add("done");button.innerHTML='<i class="fa-solid fa-check ic-l"></i>Concluído'}refresh();showToast(alreadyDone?"Esta orientação já estava concluída.":'Dica concluída! Parabéns pelo progresso.')}
+let toastTimer=null;
+function showToast(message){const t=document.getElementById("toast");if(!t)return;t.innerHTML="";const i=document.createElement("i");i.className="fa-solid fa-circle-check";const s=document.createElement("span");s.textContent=message;t.append(i,s);t.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove("show"),3500)}
+if(sessionStorage.getItem("showClearToast")==="1"){sessionStorage.removeItem("showClearToast");showToast("Seus dados e progresso do ConectBem foram limpos com sucesso!")}
+
+</script>
+<script>
+(function(){
+const days=["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"],full=["Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado","Domingo"];let current=0;
+const $=id=>document.getElementById(id),week=$("week"),list=$("customHabits"),input=$("newHabit"),repeatAll=$("repeatAll");
+days.forEach((d,i)=>{const b=document.createElement("button");b.className="day"+(i===0?" active":"");b.textContent=d;b.onclick=()=>selectDay(i);week.appendChild(b)});
+const load=i=>{try{const d=JSON.parse(localStorage.getItem("routine_"+i)||"{}");return d&&typeof d==="object"?d:{}}catch(e){return{}}};
+const store=(i,d)=>{try{localStorage.setItem("routine_"+i,JSON.stringify(d))}catch(e){showToast("Não foi possível salvar neste navegador.")}};
+const customOf=d=>Array.isArray(d.custom)?d.custom:[];
+function collect(){const d={};document.querySelectorAll("#rotina [data-r]").forEach(c=>d[c.dataset.r]=c.checked);d.custom=[...list.querySelectorAll(".custom-habit")].map(r=>({id:r.dataset.id,text:r.dataset.text,done:r.querySelector("input").checked}));return d}
+function persist(){store(current,collect());refresh()}
+function progress(){const boxes=[...document.querySelectorAll("#rotina [data-r], #customHabits input")],n=boxes.filter(c=>c.checked).length;$("routineProgress").style.width=(boxes.length?n/boxes.length*100:0)+"%";$("routineCount").textContent=n+" de "+boxes.length+" hábitos marcados"}
+function renderCustom(items){list.innerHTML="";$("customTitle").hidden=!items.length;items.forEach(h=>{const row=document.createElement("div");row.className="custom-habit";row.dataset.id=h.id;row.dataset.text=h.text;
+ const label=document.createElement("label"),cb=document.createElement("input");cb.type="checkbox";cb.checked=!!h.done;cb.addEventListener("change",()=>{persist();progress()});label.append(cb,document.createTextNode(h.text));
+ const rm=document.createElement("button");rm.type="button";rm.className="remove-habit";rm.title="Remover hábito";rm.setAttribute("aria-label","Remover hábito "+h.text);rm.innerHTML='<i class="fa-solid fa-trash"></i>';rm.onclick=()=>removeHabit(h.id);
+ row.append(label,rm);list.appendChild(row)})}
+function selectDay(i){current=i;document.querySelectorAll(".day").forEach((b,n)=>b.classList.toggle("active",n===i));$("dayTitle").textContent=full[i];const d=load(i);document.querySelectorAll("#rotina [data-r]").forEach(c=>c.checked=!!d[c.dataset.r]);renderCustom(customOf(d));$("saved").textContent="";progress()}
+function addHabit(){const text=input.value.trim().replace(/\s+/g," ");if(!text){showToast("Digite o nome do hábito antes de adicionar.");input.focus();return}
+ persist();const id="c"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);let added=0;
+ (repeatAll.checked?[0,1,2,3,4,5,6]:[current]).forEach(i=>{const d=load(i),c=customOf(d);if(c.some(h=>h.text.toLowerCase()===text.toLowerCase()))return;c.push({id,text,done:false});d.custom=c;store(i,d);added++});
+ if(!added){showToast("Esse hábito já existe neste dia.");return}
+ input.value="";selectDay(current);refresh();showToast('Hábito "'+text+'" adicionado!')}
+function removeHabit(id){persist();const d=load(current);d.custom=customOf(d).filter(h=>h.id!==id);store(current,d);renderCustom(d.custom);progress();refresh();showToast("Hábito removido.")}
+document.querySelectorAll("#rotina [data-r]").forEach(c=>c.addEventListener("change",()=>{persist();progress()}));
+$("addHabit").onclick=addHabit;input.addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();addHabit()}});
+$("saveRoutine").onclick=()=>{persist();$("saved").innerHTML='<i class="fa-solid fa-check ic-l"></i>Dia salvo com sucesso!';showToast("Dia salvo com sucesso!")};
+selectDay(0);
+})();
+</script>
+<script>
+const modal=document.getElementById("videoModal"),frame=document.getElementById("videoFrame");document.querySelectorAll(".videoBtn").forEach(b=>b.onclick=()=>{frame.src=b.dataset.video+"?autoplay=1";modal.classList.add("show")});document.getElementById("closeVideo").onclick=()=>{modal.classList.remove("show");frame.src=""};modal.onclick=e=>{if(e.target===modal){modal.classList.remove("show");frame.src=""}}
+</script>
+<script>
+(function(){
+const P={mental:{n:"Saúde Mental",i:"fa-brain"},body:{n:"Saúde Corporal",i:"fa-person-running"},social:{n:"Saúde Social",i:"fa-handshake"}};
+const FREQ=["Quase sempre","Às vezes","Raramente"],REV=["Raramente","Às vezes","Frequentemente"];
+// [pilar, pergunta, opções, feedback positivo, dica de atenção]
+const Q=[
+["mental","Você costuma usar o celular até a hora de dormir?",FREQ,"Ótimo! Proteger o horário de dormir ajuda na recuperação e na atenção do dia seguinte.","Telas até o último minuto podem manter a mente em alerta. Experimente reduzir o brilho e desligar o aparelho 20 a 30 minutos antes de dormir."],
+["mental","Quando estuda, verifica notificações com frequência?",FREQ,"Muito bom! Menos interrupções ajudam a manter o raciocínio e a concentração.","Alertas frequentes quebram a concentração. Use o modo foco e combine horários para conferir mensagens."],
+["body","Você passa longos períodos sentado sem fazer pausas?",FREQ,"Excelente! Variar a posição ao longo do dia faz bem ao corpo e à atenção.","Pausas curtas ajudam: levante, caminhe um pouco ou alongue-se entre uma tarefa e outra."],
+["body","Você consegue reservar períodos do dia sem tela?",REV,"Que bom! Esses intervalos descansam a visão e a mente.","Comece pequeno: escolha um momento do dia, como a refeição, para ficar sem tela."],
+["social","Você deixa de conversar presencialmente para ficar no celular?",FREQ,"Ótimo! Dar atenção a quem está com você fortalece os vínculos.","Combine momentos sem celular em refeições e conversas. A presença faz diferença."],
+["social","Você costuma conferir fontes antes de compartilhar informações?",REV,"Muito bem! Checar fontes é um cuidado com você e com as outras pessoas.","Antes de compartilhar, confira autoria, data e se outras fontes confiáveis dizem o mesmo."],
+["mental","Você sente necessidade ou ansiedade de checar o celular assim que recebe uma notificação?",FREQ,"Ótimo! Você consegue decidir quando olhar o celular, sem obedecer a todo alerta.","Experimente silenciar notificações não essenciais e conferir mensagens em horários definidos. Se houver algo urgente, mantenha os contatos importantes liberados."],
+["body","Durante o uso do computador, você faz pausas para descansar a visão e olhar para longe?",REV,"Muito bem! Pausas visuais ajudam a interromper períodos longos de atenção à tela.","Inclua pequenas pausas visuais durante o uso do computador. Olhe para um ponto distante, pisque naturalmente e ajuste a tela ao ambiente."],
+["body","Você procura manter uma postura confortável e ajustar a posição da tela ao usar o computador?",REV,"Excelente! Ajustar o espaço e variar a posição favorece o conforto.","Ajuste a tela para não precisar inclinar muito o pescoço, apoie os pés quando possível e varie a posição ao longo do dia."],
+["body","Você se lembra de beber água ao longo do dia, inclusive quando está usando telas?",REV,"Muito bom! Manter água por perto pode ajudar você a lembrar de se hidratar.","Deixe água por perto e faça pequenas pausas para beber. As necessidades variam conforme a pessoa, o clima e a atividade."],
+["social","Você costuma fazer refeições sem assistir a vídeos ou mexer no celular?",REV,"Que bom! Refeições sem distrações podem abrir espaço para perceber a comida e conversar com outras pessoas.","Experimente deixar o celular de lado em uma refeição por dia. Use esse momento para comer com atenção ou conversar com quem estiver por perto."]
+];
+const FOCUS={mental:"Experimente silenciar notificações durante o estudo e criar um horário sem tela antes de dormir.",body:"Programe pausas curtas para levantar, alongar e descansar a visão.",social:"Reserve momentos sem celular com quem convive com você e confira as fontes antes de compartilhar."};
+const $=id=>document.getElementById(id),stage=$("quizStage"),qEl=$("question"),aEl=$("answers"),bar=$("quizBar"),num=$("quizNumber"),fb=$("quizFeedback"),next=$("quizNext"),pill=$("quizPillar"),res=$("quizResult"),restart=$("restart");
+let i=0,risk,answered=false,moving=false;
+function render(){const [p,t,o]=Q[i];answered=moving=false;num.textContent="Pergunta "+(i+1)+" de "+Q.length;bar.style.width=(i/Q.length*100)+"%";
+ pill.className="quiz-pillar qp-"+p;pill.innerHTML='<i class="fa-solid '+P[p].i+' ic-l"></i>'+P[p].n;qEl.textContent=t;aEl.innerHTML="";fb.className="quiz-feedback";fb.innerHTML="";next.classList.remove("show");
+ o.forEach((txt,k)=>{const b=document.createElement("button");b.type="button";b.className="answer";const m=document.createElement("span");m.className="mark";m.textContent="ABC"[k];const s=document.createElement("span");s.textContent=txt;b.append(m,s);b.onclick=()=>choose(k,b);aEl.appendChild(b)});
+ stage.classList.remove("leaving","entering");void stage.offsetWidth;stage.classList.add("entering")}
+function choose(k,btn){if(answered)return;answered=true;const [p,,,good,tip]=Q[i];
+ const level=Q[i][2]===REV?2-k:k,tone=level===0?"good":level===1?"mid":"warn";risk[p]+=level;
+ [...aEl.children].forEach(x=>x.classList.add("locked"));btn.classList.add("chosen",tone);
+ fb.className="quiz-feedback show "+tone;fb.innerHTML='<i class="fa-solid '+(tone==="good"?"fa-circle-check":"fa-lightbulb")+'"></i><span></span>';fb.querySelector("span").textContent=level===0?good:tip;
+ bar.style.width=((i+1)/Q.length*100)+"%";next.innerHTML=(i===Q.length-1?'Ver meu resultado<i class="fa-solid fa-chart-pie ic-r"></i>':'Próxima pergunta<i class="fa-solid fa-arrow-right ic-r"></i>');next.classList.add("show")}
+next.onclick=()=>{if(!answered||moving)return;moving=true;stage.classList.remove("entering");stage.classList.add("leaving");setTimeout(()=>{i++;i<Q.length?render():result()},260)};
+function result(){stage.style.display="none";pill.style.display="none";num.textContent="Resultado final";bar.style.width="100%";
+ const pct={},lvl=v=>v>=70?"Equilíbrio saudável":v>=40?"Em desenvolvimento":"Merece atenção";
+ Object.keys(P).forEach(k=>{const max=Q.filter(q=>q[0]===k).length*2;pct[k]=Math.round((max-risk[k])/max*100)});
+ const all=Math.round((pct.mental+pct.body+pct.social)/3),low=Object.keys(P).reduce((a,k)=>pct[k]<pct[a]?k:a,"mental");
+ const status=all>=80?"Saúde digital excelente":all>=55?"Atenção necessária":"Alto risco de burnout digital";
+ const msg=all>=80?"Seus resultados indicam hábitos digitais equilibrados. Continue cuidando do sono, das pausas, do movimento e das relações fora das telas.":all>=55?"Alguns hábitos merecem atenção. Escolha uma ou duas mudanças possíveis e acompanhe como elas afetam sua rotina.":"Suas respostas apontam vários hábitos que podem estar prejudicando seu equilíbrio. Comece com mudanças pequenas e procure apoio de alguém de confiança se o uso das telas estiver atrapalhando seu sono, estudos ou bem-estar.";
+ res.className="quiz-result anim";
+ res.innerHTML='<div class="qr-head"><strong>Resultado educativo</strong><h2 style="margin:10px 0 4px">'+status+'</h2><div class="qr-score">'+all+'%</div><small>de equilíbrio geral</small></div><p>'+msg+'</p>'+Object.keys(P).map(k=>'<div class="pr"><div class="pr-top"><span><i class="fa-solid '+P[k].i+' ic-l"></i>'+P[k].n+'</span><span>'+pct[k]+'% <small>• '+lvl(pct[k])+'</small></span></div><div class="pr-track"><div class="pr-fill '+k+'" data-w="'+pct[k]+'"></div></div></div>').join("")+
+ '<div class="qr-focus"><i class="fa-solid fa-seedling ic-l"></i><strong>'+(pct[low]>=70?"Continue assim!":"Por onde começar: "+P[low].n)+'</strong><p>'+(pct[low]>=70?"Mantenha seus hábitos e continue observando como se sente.":FOCUS[low])+'</p></div><p class="small-note" style="margin-top:14px">Este quiz é apenas uma ferramenta de reflexão e não uma avaliação médica.</p><a class="btn light" href="#rotina">Montar minha rotina<i class="fa-solid fa-arrow-right ic-r"></i></a>';
+ requestAnimationFrame(()=>requestAnimationFrame(()=>res.querySelectorAll(".pr-fill").forEach(f=>f.style.width=f.dataset.w+"%")));restart.style.display="inline-block"}
+restart.onclick=()=>{res.innerHTML="";res.className="";stage.style.display="";pill.style.display="";restart.style.display="none";i=0;risk={mental:0,body:0,social:0};render()};
+risk={mental:0,body:0,social:0};render();
+})();
+</script>
+<script>
+function dayHasActivity(i){try{const d=JSON.parse(localStorage.getItem("routine_"+i)||"{}");return Object.keys(d).some(k=>k!=="custom"&&d[k]===true)||(Array.isArray(d.custom)&&d.custom.some(h=>h.done))}catch(e){return false}}
+function refresh(){let days=0;for(let i=0;i<7;i++){if(dayHasActivity(i))days++}let tips=JSON.parse(localStorage.getItem("tips")||"[]").length,ex=JSON.parse(localStorage.getItem("exercises")||"[]").length;document.getElementById("days").textContent=days;document.getElementById("tips").textContent=tips;document.getElementById("exercises").textContent=ex;let bars=document.getElementById("bars");bars.innerHTML="";for(let i=0;i<7;i++){let d=JSON.parse(localStorage.getItem("routine_"+i)||"{}"),g=document.createElement("div");g.className="bar-group";["mental","body","social"].forEach((k,j)=>{let b=document.createElement("div");b.className="bar "+["m","b","s"][j];b.style.height=((d[k]?1:0)*100)+"%";b.title=daysName(i)+" • "+k;g.appendChild(b)});bars.appendChild(g)}}function daysName(i){return["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"][i]}document.getElementById("clearData")?.addEventListener("click",()=>{if(confirm("Apagar todos os dados salvos neste navegador?")){localStorage.clear();sessionStorage.setItem("showClearToast","1");location.reload()}});refresh();
+
+</script>
+<script>
+(function(){
+  const pages=[...document.querySelectorAll('.single-page-section')];
+  const links=[...document.querySelectorAll('#mainNav a[data-page]')];
+
+  function showPage(id, updateHash=true){
+    if(!document.getElementById(id)) id='home';
+    pages.forEach(p=>p.classList.toggle('active',p.id===id));
+    links.forEach(a=>a.classList.toggle('active',a.dataset.page===id));
+    if(updateHash) history.replaceState(null,'','#'+id);
+    window.scrollTo({top:0,behavior:'smooth'});
+    document.querySelector('#mainNav')?.classList.remove('open');
+  }
+
+  links.forEach(a=>a.addEventListener('click',()=>showPage(a.dataset.page)));
+  function fromHash(){
+    const id=location.hash.replace('#','')||'home';
+    showPage(id,false);
+  }
+  window.addEventListener('hashchange',fromHash);
+  fromHash();
+
+  // Corrige links internos dos conteúdos para funcionarem como navegação única.
+  document.querySelectorAll('a[href="impactos.html"]').forEach(a=>{a.href='#impactos';a.onclick=e=>{e.preventDefault();showPage('impactos')}});
+  document.querySelectorAll('a[href="dicas.html"]').forEach(a=>{a.href='#dicas';a.onclick=e=>{e.preventDefault();showPage('dicas')}});
+  document.querySelectorAll('a[href="rotina.html"]').forEach(a=>{a.href='#rotina';a.onclick=e=>{e.preventDefault();showPage('rotina')}});
+  document.querySelectorAll('a[href="exercicios.html"]').forEach(a=>{a.href='#exercicios';a.onclick=e=>{e.preventDefault();showPage('exercicios')}});
+  document.querySelectorAll('a[href="quiz.html"]').forEach(a=>{a.href='#quiz';a.onclick=e=>{e.preventDefault();showPage('quiz')}});
+  document.querySelectorAll('a[href="progresso.html"]').forEach(a=>{a.href='#progresso';a.onclick=e=>{e.preventDefault();showPage('progresso')}});
+  document.querySelectorAll('a[href="index.html"]').forEach(a=>{a.href='#home';a.onclick=e=>{e.preventDefault();showPage('home')}});
+})();
+</script>
+<script>
+/* Mantém as marcações de dicas sincronizadas com o armazenamento local. */
+(function(){
+  const tipButtons=[...document.querySelectorAll('#dicas .tip-card button')];
+  function updateTipCounter(){
+    const saved=JSON.parse(localStorage.getItem('tips')||'[]');
+    const count=tipButtons.filter(b=>saved.includes(b.getAttribute('onclick')?.match(/saveTip\('([^']+)'/)?.[1])).length;
+    const counter=document.getElementById('tipsCounter');
+    if(counter) counter.textContent=count+' de '+tipButtons.length+' concluídas';
+  }
+  tipButtons.forEach(button=>{
+    const name=button.getAttribute('onclick')?.match(/saveTip\('([^']+)'/)?.[1];
+    if(name && JSON.parse(localStorage.getItem('tips')||'[]').includes(name)){
+      button.classList.add('done');button.innerHTML='<i class="fa-solid fa-check ic-l"></i>Concluído';
+    }
+  });
+  const originalSaveTip=window.saveTip;
+  window.saveTip=function(name,button){originalSaveTip(name,button);updateTipCounter();};
+  updateTipCounter();
+})();
+</script>
+<script>
+/* Exercícios: marcar/desmarcar como concluído (um único código para todos os cards) */
+(function(){
+  const KEY="exercises";
+  const read=()=>{try{const a=JSON.parse(localStorage.getItem(KEY)||"[]");return Array.isArray(a)?a:[]}catch(e){return[]}};
+  const write=a=>{try{localStorage.setItem(KEY,JSON.stringify(a))}catch(e){}};
+
+  function paint(btn,done){
+    const card=btn.closest(".exercise"),msg=card&&card.querySelector(".msg-sucesso");
+    btn.classList.toggle("done",done);
+    btn.setAttribute("aria-pressed",done?"true":"false");
+    btn.querySelector(".btn-label").textContent=done?"Concluído":"Marcar como feito";
+    if(card)card.classList.toggle("concluido",done);
+    if(msg)msg.hidden=!done;
+  }
+
+  function concluirExercicio(btn){
+    const name=btn.dataset.exercise;
+    let list=read();
+    const done=!list.includes(name);
+    list=done?list.concat(name):list.filter(x=>x!==name);
+    write(list);
+    paint(btn,done);
+    try{refresh()}catch(e){}                       // atualiza a aba Progresso
+    if(typeof showToast==="function")showToast(done?"Exercício concluído! Ótimo trabalho.":"Exercício desmarcado.");
+  }
+  window.concluirExercicio=concluirExercicio;
+
+  document.addEventListener("click",e=>{
+    const btn=e.target.closest(".btn-concluir");
+    if(btn)concluirExercicio(btn);
+  });
+
+  const saved=read();
+  document.querySelectorAll(".btn-concluir").forEach(b=>paint(b,saved.includes(b.dataset.exercise)));
+})();
+</script>
+<script>
+/* Registro diário + Minha evolução (localStorage, indexado por data) */
+(function(){
+  const KEY="conectbem_history",$=id=>document.getElementById(id);
+  const read=()=>{try{const o=JSON.parse(localStorage.getItem(KEY)||"{}");return o&&typeof o==="object"&&!Array.isArray(o)?o:{}}catch(e){return{}}};
+  const write=o=>{try{localStorage.setItem(KEY,JSON.stringify(o));return true}catch(e){return false}};
+  const pad=n=>String(n).padStart(2,"0");
+  const fmt=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());   // data local, sem erro de fuso
+  const shift=(str,n)=>{const [y,m,d]=str.split("-").map(Number);return fmt(new Date(y,m-1,d+n))};
+  const br=n=>n.toFixed(1).replace(".",",")+" h";
+  const done=r=>r&&Array.isArray(r.habits)&&r.habits.length>=3;
+  const boxes=()=>[...document.querySelectorAll("#evoHabits input")];
+
+  function fillForm(){
+    const r=read()[$("evoDate").value];
+    $("evoScreen").value=r&&r.screen!=null?r.screen:"";
+    boxes().forEach(b=>b.checked=!!(r&&r.habits&&r.habits.includes(b.value)));
+  }
+
+  function render(){
+    if(!$("evoBars"))return;
+    const h=read(),today=fmt(new Date());
+    let streak=0,d=h[today]?today:shift(today,-1);
+    while(done(h[d])){streak++;d=shift(d,-1)}
+    const keys=Object.keys(h).sort();let best=0,run=0,prev=null;
+    keys.forEach(k=>{if(done(h[k])){run=(prev&&shift(prev,1)===k&&run>0)?run+1:1;best=Math.max(best,run);prev=k}else{run=0;prev=null}});
+    const days=[];for(let i=6;i>=0;i--)days.push(shift(today,-i));
+    const rec=days.filter(k=>h[k]&&h[k].screen!=null);
+    $("evoStreak").textContent=streak;$("evoBest").textContent=best;
+    $("evoAvg").textContent=rec.length?br(rec.reduce((a,k)=>a+h[k].screen,0)/rec.length):"–";
+    if(rec.length>1){const df=h[rec[rec.length-1]].screen-h[rec[0]].screen;$("evoDelta").textContent=(df>0?"+":df<0?"−":"")+br(Math.abs(df))}else $("evoDelta").textContent="–";
+    const max=Math.max(8,...rec.map(k=>h[k].screen));
+    const bars=$("evoBars");bars.innerHTML="";
+    const lbl=document.createElement("div");lbl.className="evo-lbls";
+    days.forEach(k=>{
+      const r=h[k],col=document.createElement("div");col.className="evo-col";
+      const v=document.createElement("span");v.className="val";v.textContent=r&&r.screen!=null?br(r.screen):"";
+      const b=document.createElement("div");b.className="bar-fill"+(done(r)?" good":r?" ok":"");
+      b.style.height=(r&&r.screen!=null?Math.max(2,r.screen/max*80):1)+"%";
+      b.title=k.split("-").reverse().join("/")+(r?" • "+(r.habits||[]).length+" de 4 hábitos":" • sem registro");
+      col.append(v,b);bars.appendChild(col);
+      const l=document.createElement("span");l.textContent=k.slice(8)+"/"+k.slice(5,7);lbl.appendChild(l);
+    });
+    document.querySelectorAll(".evo-lbls").forEach(e=>e.remove());
+    bars.after(lbl);
+    $("evoEmpty").style.display=keys.length?"none":"block";
+  }
+
+  function save(){
+    const date=$("evoDate").value,raw=$("evoScreen").value.replace(",",".");
+    if(!date){showToast("Escolha a data do registro.");return}
+    const screen=raw===""?null:parseFloat(raw);
+    if(screen!==null&&(isNaN(screen)||screen<0||screen>24)){showToast("Informe um tempo de tela entre 0 e 24 horas.");return}
+    const h=read(),existed=!!h[date];
+    h[date]={screen,habits:boxes().filter(b=>b.checked).map(b=>b.value)};
+    if(!write(h)){showToast("Não foi possível salvar neste navegador.");return}
+    render();showToast(existed?"Registro atualizado! Continue assim.":"Registro salvo! Ótimo acompanhamento.");
+  }
+
+  function exportar(){
+    const h=read();
+    if(!Object.keys(h).length){showToast("Ainda não há registros para exportar.");return}
+    const blob=new Blob([JSON.stringify({app:"ConectBem",exportadoEm:fmt(new Date()),historico:h},null,2)],{type:"application/json"});
+    const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="conectbem-progresso-"+fmt(new Date())+".json";
+    document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+    showToast("Progresso exportado com sucesso!");
+  }
+
+  function resetar(){
+    if(!confirm("Apagar todo o histórico de registros diários? Essa ação não pode ser desfeita."))return;
+    try{localStorage.removeItem(KEY)}catch(e){}
+    fillForm();render();showToast("Histórico de registros resetado.");
+  }
+
+  if($("evoDate")){
+    $("evoDate").value=fmt(new Date());$("evoDate").max=fmt(new Date());
+    $("evoDate").addEventListener("change",fillForm);
+    $("evoSave").addEventListener("click",save);
+    $("evoExport").addEventListener("click",exportar);
+    $("evoReset").addEventListener("click",resetar);
+    fillForm();render();
+    const orig=window.refresh;window.refresh=function(){if(orig)orig.apply(this,arguments);render()};
+    document.querySelectorAll('#mainNav a[data-page="progresso"]').forEach(a=>a.addEventListener("click",()=>{fillForm();render()}));
+  }
+})();
+</script>
+<script>
+/* Temporizador de tempo de uso contínuo + lembretes de pausa */
+(function(){
+  const $=id=>document.getElementById(id);
+  const LIM_KEY="conectbem_pause_limit",DEF=30,AWAY_RESET_MS=5*60*1000;   // ficar 5 min fora da aba conta como pausa
+  const TITLE="Hora de descansar a tela no ConectBem!",BODY="Você atingiu seu limite de tempo. Que tal se afastar da tela, beber água e fazer um alongamento?";
+  let limit=DEF,elapsed=0,last=Date.now(),hiddenAt=null,modalOpen=false;
+
+  try{const v=parseInt(localStorage.getItem(LIM_KEY),10);if(v>=1&&v<=180)limit=v}catch(e){}
+  const supported="Notification" in window;
+
+  function fmt(ms){const t=Math.floor(ms/1000);return String(Math.floor(t/60)).padStart(2,"0")+":"+String(t%60).padStart(2,"0")}
+  function paintBtn(){
+    const b=$("pauseEnable"),l=b.querySelector("span");
+    if(!supported){l.textContent="Notificações indisponíveis — usaremos um aviso na tela";b.disabled=true;return}
+    if(Notification.permission==="granted"){l.textContent="Lembretes ativados";b.classList.add("on");b.disabled=true}
+    else if(Notification.permission==="denied"){l.textContent="Notificações bloqueadas — usaremos um aviso na tela";b.disabled=true}
+  }
+  function paint(){$("pauseElapsed").textContent=fmt(elapsed);$("pauseLimitTxt").textContent=limit}
+  function reset(){elapsed=0;last=Date.now();paint()}
+
+  function openModal(){
+    modalOpen=true;$("pauseModal").classList.add("show");$("pauseGo").focus();
+  }
+  function closeModal(){modalOpen=false;$("pauseModal").classList.remove("show")}
+  function goExercises(){
+    closeModal();reset();
+    const a=document.querySelector('#mainNav a[data-page="exercicios"]');if(a)a.click();else location.hash="#exercicios";
+  }
+
+  function alertPause(){
+    let sent=false;
+    if(supported&&Notification.permission==="granted"){
+      try{
+        const ic=document.querySelector('link[rel="apple-touch-icon"]');
+        const n=new Notification(TITLE,{body:BODY,icon:ic?ic.href:undefined,tag:"conectbem-pausa"});
+        n.onclick=()=>{window.focus();goExercises();n.close()};
+        sent=true;
+      }catch(e){sent=false}
+    }
+    if(!sent)openModal();          // sem permissão (ou falha): aviso visual destacado
+    else if(typeof showToast==="function")showToast("Hora de uma pausa! Veja a notificação.");
+    reset();                       // reinicia a contagem para o próximo ciclo
+  }
+
+  function tick(){
+    const now=Date.now();
+    if(document.visibilityState==="visible"&&!modalOpen)elapsed+=now-last;   // pausa se a aba estiver oculta
+    last=now;paint();
+    if(elapsed>=limit*60000)alertPause();
+  }
+
+  document.addEventListener("visibilitychange",()=>{
+    const now=Date.now();
+    if(document.visibilityState==="hidden"){hiddenAt=now}
+    else{if(hiddenAt&&now-hiddenAt>=AWAY_RESET_MS)elapsed=0;hiddenAt=null;last=now;paint()}
+  });
+
+  $("pauseLimit").value=limit;
+  $("pauseLimit").addEventListener("change",e=>{
+    let v=parseInt(e.target.value,10);if(isNaN(v)||v<1)v=DEF;if(v>180)v=180;
+    limit=v;e.target.value=v;try{localStorage.setItem(LIM_KEY,String(v))}catch(err){}
+    paint();if(typeof showToast==="function")showToast("Limite definido: "+v+" min.");
+  });
+  $("pauseEnable").addEventListener("click",()=>{
+    if(!supported)return;
+    const done=p=>{paintBtn();if(typeof showToast==="function")showToast(p==="granted"?"Lembretes ativados! Avisaremos quando for hora de uma pausa.":"Sem notificações: mostraremos um aviso na tela.")};
+    try{const r=Notification.requestPermission(done);if(r&&r.then)r.then(done)}catch(e){paintBtn()}
+  });
+  $("pauseReset").addEventListener("click",()=>{reset();if(typeof showToast==="function")showToast("Cronômetro zerado.")});
+  $("pauseGo").addEventListener("click",goExercises);
+  $("pauseDone").addEventListener("click",()=>{closeModal();reset();if(typeof showToast==="function")showToast("Pausa registrada! Seu corpo agradece.")});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modalOpen){closeModal();reset()}});
+
+  paintBtn();paint();setInterval(tick,1000);
+})();
+</script>
+</body>
+</html>
