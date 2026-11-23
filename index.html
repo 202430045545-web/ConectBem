@@ -186,13 +186,15 @@ i.fa-brands,.fa-brands,.fab{font-family:"Font Awesome 6 Brands"!important;font-w
 /* quadrado do ícone nos cards da Home (o próprio <i> é a caixa de 58x58) */
 .feature>i{display:inline-flex!important;align-items:center!important;justify-content:center!important;line-height:1!important;margin:0!important;padding:0!important;flex:none}
 /* ícone das dicas: container alinha o <i> pelo centro vertical */
-.tip-card>b{display:flex!important;align-items:center!important;line-height:1!important}
-.tip-card>b i{display:inline-flex!important;align-items:center;justify-content:center;line-height:1!important;margin:0!important;padding:0!important}
+.tip-card>b,.dica-icon,[class*="icon-container"],[class*="icon-box"]{display:flex!important;align-items:center!important;justify-content:center!important;text-align:center!important;box-sizing:border-box!important;line-height:1!important}
+.tip-card>b i,.dica-icon i,[class*="icon-box"] i,[class*="icon-container"] i{display:inline-flex!important;align-items:center;justify-content:center;line-height:1!important;margin:0!important;padding:0!important}
 /* círculo "3 pilares" da Home */
 .balance i{display:inline-flex!important;align-items:center;justify-content:center;line-height:1!important;margin:0!important;padding:0!important}
 /* ícones do menu: caixa fixa e centralizada (mantém o espaçamento .ic-l do texto) */
 .header nav a i{display:inline-flex;align-items:center;justify-content:center;line-height:1}
 
+/* Reset geral das tags <i> (mantém as margens .ic-l/.ic-r usadas entre ícone e texto) */
+i.fa-solid,i.fa-regular,i.fa-brands{display:inline-flex;align-items:center;justify-content:center;line-height:1;padding:0;box-sizing:border-box}
 /* ===== Registro diário e Minha evolução ===== */
 .evo-card{margin-bottom:25px}
 .evo-hint{color:var(--muted);font-size:.92rem;margin:6px 0 14px}
@@ -230,8 +232,15 @@ i.fa-brands,.fa-brands,.fab{font-family:"Font Awesome 6 Brands"!important;font-w
 .pause-bar button.on{background:#d9f8e8;color:#087443;cursor:default}
 .pause-bar .pause-ghost,.pause-actions .pause-ghost{background:#edf2ff;color:#315efb}
 body.dark .pause-bar .pause-ghost,body.dark .pause-actions .pause-ghost{background:#1b2a4d;color:#9db4ff}
-.pause-modal{display:none;position:fixed;inset:0;background:#000b;z-index:60;align-items:center;justify-content:center;padding:20px}
-.pause-modal.show{display:flex}
+.pause-modal{display:flex;position:fixed;inset:0;background:#000b;z-index:60;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s;backdrop-filter:blur(3px)}
+.pause-modal.show{opacity:1;visibility:visible}
+.pause-modal .pause-box{transform:translateY(22px) scale(.96);transition:transform .35s cubic-bezier(.2,.9,.3,1.2)}
+.pause-modal.show .pause-box{transform:none}
+.pause-ico.warn{color:#e5484d}
+.pause-motiv{font-weight:700;color:var(--primary)!important;margin-top:12px}
+.pause-actions .pause-danger{background:#e5484d;color:#fff}
+.pause-why{flex-basis:100%;color:var(--muted);font-size:.84rem}
+@media (prefers-reduced-motion:reduce){.pause-modal,.pause-modal .pause-box{transition:none}}
 .pause-box{background:var(--card);color:var(--text);max-width:460px;width:100%;border-radius:20px;padding:30px;text-align:center;box-shadow:0 20px 60px #0008;border-top:6px solid var(--primary)}
 .pause-box h2{margin:10px 0 8px}.pause-box p{color:var(--muted);line-height:1.5}
 .pause-ico{font-size:2.6rem;color:var(--primary)}
@@ -262,6 +271,7 @@ body.dark .pause-bar .pause-ghost,body.dark .pause-actions .pause-ghost{backgrou
 <label class="pause-limit">Limite (min)<input type="number" id="pauseLimit" min="1" max="180" step="1" value="30" inputmode="numeric"/></label>
 <button type="button" id="pauseEnable"><i class="fa-solid fa-bell ic-l"></i><span>Ativar lembretes de pausa saudável</span></button>
 <button type="button" id="pauseReset" class="pause-ghost" title="Zerar o cronômetro"><i class="fa-solid fa-rotate-left ic-l"></i>Zerar</button>
+<span class="pause-why"><i class="fa-solid fa-eye ic-l"></i>Pausas curtas aliviam o cansaço visual, a tensão no pescoço e ajudam a manter o foco. Ative os lembretes para receber um aviso na hora certa.</span>
 </div>
 
 <div class="single-page-section active" id="home">
@@ -416,7 +426,11 @@ body.dark .pause-bar .pause-ghost,body.dark .pause-actions .pause-ghost{backgrou
 <div class="pause-modal" id="pauseModal" role="alertdialog" aria-modal="true" aria-labelledby="pauseTitle" aria-describedby="pauseText">
 <div class="pause-box"><i class="fa-solid fa-hand-holding-heart pause-ico"></i><h2 id="pauseTitle">Hora de descansar a tela no ConectBem!</h2>
 <p id="pauseText">Você atingiu seu limite de tempo. Que tal se afastar da tela, beber água e fazer um alongamento?</p>
+<p class="pause-motiv" id="pauseMotiv"></p>
 <div class="pause-actions"><button type="button" id="pauseGo"><i class="fa-solid fa-dumbbell ic-l"></i>Ir para Exercícios</button><button type="button" class="pause-ghost" id="pauseDone"><i class="fa-solid fa-check ic-l"></i>Já fiz uma pausa</button></div></div></div>
+<div class="pause-modal" id="confirmModal" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" aria-describedby="confirmText">
+<div class="pause-box"><i class="fa-solid fa-triangle-exclamation pause-ico warn"></i><h2 id="confirmTitle">Tem certeza?</h2><p id="confirmText"></p>
+<div class="pause-actions"><button type="button" class="pause-danger" id="confirmOk">Confirmar</button><button type="button" class="pause-ghost" id="confirmNo">Cancelar</button></div></div></div>
 <div aria-live="polite" class="toast" id="toast" role="status"></div>
 <footer><i class="fa-solid fa-scale-balanced ic-l"></i><strong>ConectBem</strong><br/><small>Projeto educativo sobre tecnologia no cotidiano.</small><br/><small>Informações gerais para reflexão; não substituem orientação profissional de saúde.</small></footer>
 <script>
@@ -509,7 +523,7 @@ risk={mental:0,body:0,social:0};render();
 </script>
 <script>
 function dayHasActivity(i){try{const d=JSON.parse(localStorage.getItem("routine_"+i)||"{}");return Object.keys(d).some(k=>k!=="custom"&&d[k]===true)||(Array.isArray(d.custom)&&d.custom.some(h=>h.done))}catch(e){return false}}
-function refresh(){let days=0;for(let i=0;i<7;i++){if(dayHasActivity(i))days++}let tips=JSON.parse(localStorage.getItem("tips")||"[]").length,ex=JSON.parse(localStorage.getItem("exercises")||"[]").length;document.getElementById("days").textContent=days;document.getElementById("tips").textContent=tips;document.getElementById("exercises").textContent=ex;let bars=document.getElementById("bars");bars.innerHTML="";for(let i=0;i<7;i++){let d=JSON.parse(localStorage.getItem("routine_"+i)||"{}"),g=document.createElement("div");g.className="bar-group";["mental","body","social"].forEach((k,j)=>{let b=document.createElement("div");b.className="bar "+["m","b","s"][j];b.style.height=((d[k]?1:0)*100)+"%";b.title=daysName(i)+" • "+k;g.appendChild(b)});bars.appendChild(g)}}function daysName(i){return["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"][i]}document.getElementById("clearData")?.addEventListener("click",()=>{if(confirm("Apagar todos os dados salvos neste navegador?")){localStorage.clear();sessionStorage.setItem("showClearToast","1");location.reload()}});refresh();
+function refresh(){let days=0;for(let i=0;i<7;i++){if(dayHasActivity(i))days++}let tips=JSON.parse(localStorage.getItem("tips")||"[]").length,ex=JSON.parse(localStorage.getItem("exercises")||"[]").length;document.getElementById("days").textContent=days;document.getElementById("tips").textContent=tips;document.getElementById("exercises").textContent=ex;let bars=document.getElementById("bars");bars.innerHTML="";for(let i=0;i<7;i++){let d=JSON.parse(localStorage.getItem("routine_"+i)||"{}"),g=document.createElement("div");g.className="bar-group";["mental","body","social"].forEach((k,j)=>{let b=document.createElement("div");b.className="bar "+["m","b","s"][j];b.style.height=((d[k]?1:0)*100)+"%";b.title=daysName(i)+" • "+k;g.appendChild(b)});bars.appendChild(g)}}function daysName(i){return["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"][i]}document.getElementById("clearData")?.addEventListener("click",()=>{ctConfirm("Todos os seus registros, dicas e exercícios concluídos neste navegador serão apagados.","Apagar tudo","Limpar meus dados?").then(ok=>{if(ok){localStorage.clear();sessionStorage.setItem("showClearToast","1");location.reload()}})});refresh();
 
 </script>
 <script>
@@ -675,9 +689,10 @@ function refresh(){let days=0;for(let i=0;i<7;i++){if(dayHasActivity(i))days++}l
   }
 
   function resetar(){
-    if(!confirm("Apagar todo o histórico de registros diários? Essa ação não pode ser desfeita."))return;
+    ctConfirm("Todo o histórico de registros diários será apagado. Essa ação não pode ser desfeita.","Resetar histórico","Resetar histórico?").then(ok=>{if(!ok)return;
     try{localStorage.removeItem(KEY)}catch(e){}
     fillForm();render();showToast("Histórico de registros resetado.");
+    });
   }
 
   if($("evoDate")){
@@ -713,7 +728,9 @@ function refresh(){let days=0;for(let i=0;i<7;i++){if(dayHasActivity(i))days++}l
   function paint(){$("pauseElapsed").textContent=fmt(elapsed);$("pauseLimitTxt").textContent=limit}
   function reset(){elapsed=0;last=Date.now();paint()}
 
+  const MOTIV=["Seu corpo e seus olhos agradecem. Levante, respire fundo e volte com mais energia!","Pequenas pausas fazem grande diferença na sua saúde. Você consegue!","Que tal olhar para longe por 20 segundos e alongar os ombros?","Beba um copo de água e movimente o corpo: é um cuidado rápido e poderoso."];
   function openModal(){
+    $("pauseMotiv").textContent=MOTIV[Math.floor(Math.random()*MOTIV.length)];
     modalOpen=true;$("pauseModal").classList.add("show");$("pauseGo").focus();
   }
   function closeModal(){modalOpen=false;$("pauseModal").classList.remove("show")}
@@ -766,7 +783,7 @@ function refresh(){let days=0;for(let i=0;i<7;i++){if(dayHasActivity(i))days++}l
   $("pauseDone").addEventListener("click",()=>{closeModal();reset();if(typeof showToast==="function")showToast("Pausa registrada! Seu corpo agradece.")});
   document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modalOpen){closeModal();reset()}});
 
-  paintBtn();paint();setInterval(tick,1000);
+  paintBtn();paint();setInterval(tick,250);   // checagem frequente: alerta no instante em que o limite é atingido
 })();
 </script>
 <script>
@@ -793,6 +810,22 @@ function refresh(){let days=0;for(let i=0;i<7;i++){if(dayHasActivity(i))days++}l
       .then(r=>{if([401,403,404].includes(r.status))fallback(f.parentElement,h.textContent.trim())})   // erro de rede/CORS: mantém o vídeo
       .catch(()=>{});
   });
+})();
+</script>
+<script>
+/* Confirmação estilizada (substitui o confirm() nativo) */
+(function(){
+  const $=id=>document.getElementById(id);let resolver=null;
+  function close(v){$("confirmModal").classList.remove("show");if(resolver){const r=resolver;resolver=null;r(v)}}
+  window.ctConfirm=function(text,okLabel,title){
+    $("confirmTitle").textContent=title||"Tem certeza?";$("confirmText").textContent=text;$("confirmOk").textContent=okLabel||"Confirmar";
+    $("confirmModal").classList.add("show");$("confirmNo").focus();
+    return new Promise(res=>{resolver=res});
+  };
+  $("confirmOk").addEventListener("click",()=>close(true));
+  $("confirmNo").addEventListener("click",()=>close(false));
+  $("confirmModal").addEventListener("click",e=>{if(e.target.id==="confirmModal")close(false)});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&resolver)close(false)});
 })();
 </script>
 </body>
