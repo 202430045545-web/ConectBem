@@ -10,7 +10,11 @@
 <meta name="theme-color" content="#315efb"/>
 <meta name="apple-mobile-web-app-title" content="Conecte com Equilíbrio"/>
 
-<title>Conecte com Equilíbrio | Tecnologia no Cotidiano</title>
+<meta name="description" content="Conecte com Equilíbrio: orientações, exercícios e acompanhamento para uma relação mais saudável com a tecnologia."/>
+<meta name="theme-color" content="#2563eb"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<title>Conecte com Equilíbrio</title>
 
 <style>
 :root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#667085;--primary:#315efb;--primary2:#6c63ff;--line:#e5e9f2;--dark:#101828;--shadow:0 15px 45px #17203312}
@@ -149,6 +153,22 @@ body.dark .tip-card details,body.dark .impact-card details{border-color:var(--li
 .danger i{vertical-align:middle}
 @media(max-width:950px){.header nav a{width:100%;text-align:left}}
 
+
+/* Alinhamento consistente dos ícones em todas as áreas */
+.icon-box,.card-icon,.dica-icon,.big-icon,.habit-icon,.remind-icon,
+[class*="icon"]{
+  display:flex!important;align-items:center!important;justify-content:center!important;
+  text-align:center!important;box-sizing:border-box!important
+}
+i,i.fa-solid,i.fa-regular,i.fa-brands{
+  margin:0!important;padding:0!important;line-height:1!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  font-style:normal!important;box-sizing:border-box!important
+}
+i.fa-solid,.fa-solid,.fas{font-family:"Font Awesome 6 Free"!important;font-weight:900!important}
+i.fa-regular,.fa-regular,.far{font-family:"Font Awesome 6 Free"!important;font-weight:400!important}
+i.fa-brands,.fa-brands,.fab{font-family:"Font Awesome 6 Brands"!important;font-weight:400!important}
+
 </style>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/><style>
 i.fa-solid, i.fa-regular, i.fa-brands {
@@ -284,7 +304,7 @@ body.dark .pause-bar .pause-ghost,body.dark .pause-actions .pause-ghost{backgrou
 <button aria-label="Alternar modo claro e escuro" class="theme" id="themeBtn"><i class="fa-solid fa-moon"></i></button>
 <button aria-label="Abrir menu de navegação" class="menu" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
 </header>
-<div class="pause-bar" id="pauseBar" role="region" aria-label="Lembretes de pausa"><span class="remind-label"><i class="fa-solid fa-bell ic-l"></i>Lembretes de pausa</span><select id="remindInterval" aria-label="Intervalo dos lembretes"><option value="30">A cada 30 min</option><option value="45">A cada 45 min</option><option value="60">A cada 1 hora</option><option value="0">Desativados</option></select><button type="button" id="pauseEnable"><i class="fa-solid fa-bell ic-l"></i><span>Ativar notificações do navegador</span></button><span class="pause-why"><i class="fa-solid fa-eye ic-l"></i>Pausas curtas aliviam o cansaço visual e a tensão no pescoço. Sem notificações, mostramos um aviso discreto aqui no site.</span></div>
+<div class="pause-bar" id="pauseBar" role="region" aria-label="Lembretes de pausa"><span class="remind-label"><i class="fa-solid fa-bell ic-l"></i>Lembretes de pausa</span><select id="remindInterval" aria-label="Intervalo dos lembretes"><option value="30">A cada 30 min</option><option value="45">A cada 45 min</option><option value="60">A cada 1 hora</option><option value="0">Desativados</option></select><button type="button" id="pauseEnable"><i class="fa-solid fa-bell ic-l"></i><span>Ativar lembretes no meu dispositivo</span></button><span class="pause-why"><i class="fa-solid fa-eye ic-l"></i>Pausas curtas aliviam o cansaço visual e a tensão no pescoço. Sem notificações, mostramos um aviso discreto aqui no site.</span></div>
 
 <div class="single-page-section active" id="home">
 <section class="hero">
@@ -406,8 +426,8 @@ body.dark .pause-bar .pause-ghost,body.dark .pause-actions .pause-ghost{backgrou
 <article class="exercise"><img alt="Pessoa caminhando em área externa" class="exercise-photo" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&amp;fit=crop&amp;w=900&amp;q=85'" src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&amp;fit=crop&amp;w=900&amp;q=85"/><div class="exercise-body"><span>02 • 5–10 minutos</span><h2>Caminhada leve</h2><p>Caminhe em ritmo confortável, em local seguro e adequado. Dentro de casa, caminhar pelo corredor também pode ser uma opção.</p><p><strong>Benefícios:</strong> interrompe o tempo sentado e acrescenta movimento à rotina.</p><p><strong>Tempo sugerido:</strong> comece com 5 minutos e ajuste conforme sua disposição.</p><div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/yvz5RccVxRc" title="Demonstração: Caminhada leve" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><button type="button" class="btn-concluir" data-exercise="Caminhada" aria-pressed="false"><i class="fa-solid fa-check ic-l"></i><span class="btn-label">Marcar como feito</span></button><span class="msg-sucesso" role="status" hidden>Exercício concluído! Ótimo trabalho.</span></div></article>
 <article class="exercise"><img alt="Pessoa praticando exercício físico" class="exercise-photo" loading="lazy" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&amp;fit=crop&amp;w=900&amp;q=85"/><div class="exercise-body"><span>03 • 8–12 repetições opcionais</span><h2>Sentar e levantar</h2><p>Use uma cadeira firme encostada em uma parede. Levante e sente devagar, mantendo o movimento controlado. Se precisar, use as mãos como apoio.</p><p><strong>Benefícios:</strong> movimenta pernas e quadris e trabalha ações comuns do cotidiano.</p><p><strong>Tempo sugerido:</strong> uma sequência curta, com descanso sempre que necessário.</p><div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/PuB_R_oA8GU" title="Demonstração: Sentar e levantar" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><button type="button" class="btn-concluir" data-exercise="Sentar e levantar" aria-pressed="false"><i class="fa-solid fa-check ic-l"></i><span class="btn-label">Marcar como feito</span></button><span class="msg-sucesso" role="status" hidden>Exercício concluído! Ótimo trabalho.</span></div></article>
 <article class="exercise"><img alt="Pessoa fazendo movimento suave de alongamento" class="exercise-photo" loading="lazy" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&amp;fit=crop&amp;w=900&amp;q=85"/><div class="exercise-body"><span>04 • 20–30 segundos</span><h2>Pausa para pescoço e ombros</h2><p>Relaxe os ombros e incline a cabeça levemente para cada lado, sem puxar com as mãos e sem fazer movimentos bruscos.</p><p><strong>Benefícios:</strong> oferece uma pausa para mudar a posição e perceber tensões acumuladas.</p><p><strong>Tempo sugerido:</strong> alguns segundos de cada lado, sem desconforto.</p><div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/-pWY9tEHXeo" title="Demonstração: Pausa para pescoço e ombros" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><button type="button" class="btn-concluir" data-exercise="Pausa para pescoço" aria-pressed="false"><i class="fa-solid fa-check ic-l"></i><span class="btn-label">Marcar como feito</span></button><span class="msg-sucesso" role="status" hidden>Exercício concluído! Ótimo trabalho.</span></div></article>
-<article class="exercise"><img alt="Pessoa praticando atividade física em casa" class="exercise-photo" loading="lazy" src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&amp;fit=crop&amp;w=900&amp;q=85"/><div class="exercise-body"><span>05 • 1–2 minutos</span><h2>Marcha parada</h2><p>Em pé, marche suavemente no mesmo lugar, alternando os pés e mantendo um apoio próximo caso precise de equilíbrio.</p><p><strong>Benefícios:</strong> acrescenta movimento à pausa e pode ajudar a despertar o corpo depois de um período sentado.</p><p><strong>Tempo sugerido:</strong> 1 a 2 minutos em ritmo confortável.</p><div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/z00To-hPqLE" title="Demonstração: Marcha parada" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><button type="button" class="btn-concluir" data-exercise="Marcha parada" aria-pressed="false"><i class="fa-solid fa-check ic-l"></i><span class="btn-label">Marcar como feito</span></button><span class="msg-sucesso" role="status" hidden>Exercício concluído! Ótimo trabalho.</span></div></article>
-<article class="exercise"><img alt="Pessoa fazendo exercício de mobilidade" class="exercise-photo" loading="lazy" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&amp;fit=crop&amp;w=900&amp;q=85"/><div class="exercise-body"><span>06 • 30–60 segundos</span><h2>Elevação de panturrilhas</h2><p>Fique em pé próximo a uma parede ou cadeira firme. Eleve os calcanhares devagar e retorne ao chão, usando apoio para manter o equilíbrio.</p><p><strong>Benefícios:</strong> movimenta tornozelos e pernas durante uma pausa ativa.</p><p><strong>Tempo sugerido:</strong> uma sequência curta e confortável, com intervalos.</p><div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/3xOfTYxIdLo" title="Demonstração: Elevação de panturrilhas" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><button type="button" class="btn-concluir" data-exercise="Elevação de panturrilhas" aria-pressed="false"><i class="fa-solid fa-check ic-l"></i><span class="btn-label">Marcar como feito</span></button><span class="msg-sucesso" role="status" hidden>Exercício concluído! Ótimo trabalho.</span></div></article>
+<article class="exercise"><img alt="Pessoa praticando atividade física em casa" class="exercise-photo" loading="lazy" src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&amp;fit=crop&amp;w=900&amp;q=85"/><div class="exercise-body"><span>05 • 1–2 minutos</span><h2>Marcha parada</h2><p>Em pé, marche suavemente no mesmo lugar, alternando os pés e mantendo um apoio próximo caso precise de equilíbrio.</p><p><strong>Benefícios:</strong> acrescenta movimento à pausa e pode ajudar a despertar o corpo depois de um período sentado.</p><p><strong>Tempo sugerido:</strong> 1 a 2 minutos em ritmo confortável.</p><div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/u1gmWFvEluM" title="Demonstração: Marcha parada" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><button type="button" class="btn-concluir" data-exercise="Marcha parada" aria-pressed="false"><i class="fa-solid fa-check ic-l"></i><span class="btn-label">Marcar como feito</span></button><span class="msg-sucesso" role="status" hidden>Exercício concluído! Ótimo trabalho.</span></div></article>
+<article class="exercise"><img alt="Pessoa fazendo exercício de mobilidade" class="exercise-photo" loading="lazy" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&amp;fit=crop&amp;w=900&amp;q=85"/><div class="exercise-body"><span>06 • 30–60 segundos</span><h2>Elevação de panturrilhas</h2><p>Fique em pé próximo a uma parede ou cadeira firme. Eleve os calcanhares devagar e retorne ao chão, usando apoio para manter o equilíbrio.</p><p><strong>Benefícios:</strong> movimenta tornozelos e pernas durante uma pausa ativa.</p><p><strong>Tempo sugerido:</strong> uma sequência curta e confortável, com intervalos.</p><div class="video-container"><iframe src="https://www.youtube-nocookie.com/embed/k8ipHzKeAkQ" title="Demonstração: Elevação de panturrilhas" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><button type="button" class="btn-concluir" data-exercise="Elevação de panturrilhas" aria-pressed="false"><i class="fa-solid fa-check ic-l"></i><span class="btn-label">Marcar como feito</span></button><span class="msg-sucesso" role="status" hidden>Exercício concluído! Ótimo trabalho.</span></div></article>
 </div>
 <div class="notice"><i class="fa-solid fa-triangle-exclamation ic-l"></i>Faça os movimentos em espaço livre e seguro. Não force alongamentos nem continue se sentir dor, tontura ou mal-estar. Se tiver alguma condição de saúde, limitação ou dúvida, converse com um profissional de saúde ou educação física antes de iniciar. Estas sugestões não substituem orientação individualizada.</div>
 <div class="content-panel"><h3><i class="fa-solid fa-person-walking ic-l c-body"></i>Movimento também é pausa digital</h3><p>Levantar para beber água, caminhar alguns minutos, brincar ou ajudar em uma tarefa doméstica são alternativas para quebrar longos períodos sentado. A OMS destaca que alguma atividade é melhor do que nenhuma e recomenda reduzir o comportamento sedentário.</p><p class="source-line">Referência: <a href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" rel="noopener" target="_blank">Organização Mundial da Saúde — Physical activity</a>.</p></div>
@@ -620,8 +640,9 @@ function refresh(){let days=0;for(let i=0;i<7;i++){if(dayHasActivity(i))days++}l
     if(btn)concluirExercicio(btn);
   });
 
-  const saved=read();
-  document.querySelectorAll(".btn-concluir").forEach(b=>paint(b,saved.includes(b.dataset.exercise)));
+  // Estado inicial deliberadamente limpo: nenhum exercício abre marcado como concluído.
+  // As marcações feitas nesta sessão continuam funcionando normalmente.
+  document.querySelectorAll(".btn-concluir").forEach(b=>paint(b,false));
 })();
 </script>
 <script>
@@ -727,14 +748,14 @@ function refresh(){let days=0;for(let i=0;i<7;i++){if(dayHasActivity(i))days++}l
   const TITLE="Conecte com Equilíbrio";
   let interval=DEF,elapsed=0,last=Date.now(),hiddenAt=null,idx=Math.floor(Math.random()*MSGS.length),hideT=null;
   try{const v=parseInt(localStorage.getItem(KEY),10);if(OPTS.includes(v))interval=v}catch(e){}
-  const supported="Notification" in window;
+  const supported=window.isSecureContext && "Notification" in window;
   const say=m=>{if(typeof showToast==="function")showToast(m)};
 
   function paintBtn(){
     const b=$("pauseEnable"),l=b.querySelector("span");
-    if(!supported){l.textContent="Notificações indisponíveis neste navegador";b.disabled=true;return}
+    if(!supported){l.textContent="Ativar lembretes no meu dispositivo";b.classList.remove("on");b.disabled=false;return}
     if(Notification.permission==="granted"){l.textContent="Notificações ativadas";b.classList.add("on");b.disabled=true}
-    else if(Notification.permission==="denied"){l.textContent="Notificações bloqueadas — avisaremos no site";b.disabled=true}
+    else if(Notification.permission==="denied"){l.textContent="Notificações bloqueadas — avisaremos no site";b.disabled=false}
   }
   function goExercises(){
     hideToast();const a=document.querySelector('#mainNav a[data-page="exercicios"]');if(a)a.click();else location.hash="#exercicios";
@@ -776,9 +797,13 @@ function refresh(){let days=0;for(let i=0;i<7;i++){if(dayHasActivity(i))days++}l
     say(interval===0?"Lembretes de pausa desativados.":"Lembretes de pausa: "+(interval===60?"a cada 1 hora":"a cada "+interval+" min")+".");
   });
   $("pauseEnable").addEventListener("click",()=>{
-    if(!supported)return;
+    if(!supported){say("Lembretes internos ativados. Este navegador não permite notificações nativas neste contexto; os avisos aparecerão nesta página.");return;}
     const done=p=>{paintBtn();say(p==="granted"?"Notificações ativadas! Vamos sugerir pausas ativas.":"Sem notificações: mostraremos um aviso discreto no site.")};
-    try{const r=Notification.requestPermission(done);if(r&&r.then)r.then(done)}catch(e){paintBtn()}
+    try{
+      const r=Notification.requestPermission();
+      if(r&&typeof r.then==="function")r.then(done).catch(()=>{paintBtn();say("Não foi possível ativar as notificações. Os avisos aparecerão no site.")});
+      else done(Notification.permission);
+    }catch(e){paintBtn();say("Não foi possível ativar as notificações. Os avisos aparecerão no site.")}
   });
   $("remindGo").addEventListener("click",goExercises);
   $("remindClose").addEventListener("click",hideToast);
